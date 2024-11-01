@@ -56,6 +56,7 @@ Asadar, pentru orice tip de cod exista 4 niveluri de corectare de eroare in func
 - M(Medium) - 15%,
 - Q(Quartile) - 25%,
 - H(High) - 30%. <br>
+<br>
 Cu cat nivelul e mai mare, cu atat e nevoie de alocarea mai multor biti pentru corectare. <br>
 In exemplul meu am ales un nivel Low (L), pentru a permite cat mai multe date reale sa fie stocate.<br> 
 Astfel, nu vom irosi spatiul pentru biti de eroare. <br>
