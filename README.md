@@ -76,6 +76,7 @@ Daca unul din biti se schimba din diferite probleme o sa ajunga la destinatar 01
 De data aceasta voi trimite 3 biti, 111 pentru START si 000 pentru STOP. Daca eu trimit 111 si unul din biti este alterat, destinatarul o sa primeasca o secventa de genul: 110, 101 sau 011. <br>
 Acesta isi va da seama ca eroarea este acel 0 care a aparut si ca mesajul corect transmis era de fapt 111, adica START. <br>
 Ceva de genul se intampla si in cazul codurilor QR, dar este mult mai complex. <br>
+Daca o bucatica din cod este rupta sau deteriorata, acei biti de eroare reusesc sa "ghiceasca" mesajul initial. <br>
 
 ### Convertire zecimal in binar
 Pentru a converti un numar zecimal in binar trebuie sa reusim sa il scriem sub forma unei sume de puteri ale lui 2. <br>
