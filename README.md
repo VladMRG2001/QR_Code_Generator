@@ -34,10 +34,11 @@ Orice cod QR are anumite componente definitorii: <br>
 ### Elementele definitorii 
 In imaginea de mai jos am separat zonele definitorii ale oricarui cod QR. <br>
 Zonele inconjurate cu linie rosie sunt identice pentru orice QR. <br>
-![Codqr1](https://github.com/user-attachments/assets/212ec9ac-f552-4c37-9935-492455ae1bc4) <br>
-Mai mult, in zona delimitata cu albastru avem alte patratele care nu contin datele proriuzise, o sa vorbim despre ele mai tarziu. <br>
-Acel patrat desenat cu verde in interiorul zonei albastre este intotdeauna negru.<br>
-![Codqr2](https://github.com/user-attachments/assets/a273b450-467e-4f83-929e-38be06cefcac) <br>
+![Codqr1](https://github.com/user-attachments/assets/212ec9ac-f552-4c37-9935-492455ae1bc4) <br><br>
+In imaginea urmatoare putem observa o alta sectiune rezervata. <br>
+Zona delimitata cu albastru contine alte patratele care nu contin datele proriuzise, o sa vorbim despre ele mai tarziu. <br>
+Acel patrat desenat cu verde in interiorul zonei albastre este intotdeauna negru. <br>
+![Codqr2](https://github.com/user-attachments/assets/a273b450-467e-4f83-929e-38be06cefcac) <br><br>
 Restul codului QR este destinat datelor efective. <br>
 Aceste date sunt reprezentate in format binar (adica in 0 si 1). <br>
 Culoarea alb reprezinta 0, iar culoarea negru reprezinta 1. <br>
@@ -55,7 +56,7 @@ L(Low) - 7%, M(Medium) - 15%, Q(Quartile) - 25%, H(High) - 30%. <br>
 Cu cat nivelul e mai mare, cu atat e nevoie de alocarea mai multor biti pentru corectare. <br>
 In exemplul meu am ales un nivel Low (L), pentru a permite cat mai multe date reale sa fie stocate.<br> 
 Astfel, nu vom irosi spatiul pentru biti de eroare. <br>
-Acesti biti sunt necesari in caz ca vom printa codul QR pe hartie si aceasta poate fi deteriorata. <br>
+Acesti biti sunt necesari in caz ca vom printa codul QR pe hartie si aceasta poate fi deteriorat. <br>
 Pentru codul QR Model 1 si nivel de corectare a erorilor L, avem 7 octeti pentru corectarea erorilor. <br>
 Acestia vor fi aflati prin intermediul unui algoritm special numit Reed-Solomon. <br>
 Astfel, vor ramane 19 octeti (din cei 26) pentru datele propriuzise. <br>
@@ -96,10 +97,12 @@ Ordinea de parcurgere este urmatoarea: <br>
 DF_3 -> DF_2 -> DF_1 -> DF_0 -> NC_7 -> NC_6 -> ... NC_0 -> 1_7 -> 1_6 -> ...10_0 -> 11_7 -> ... -> E7_1 -> E7_0. <br>
 Bun, poate ca pare putin ambiguu pana acum. Ce inseamna, DF, NC, 1, 2, E1 etc? <br>
 Mai jos urmeaza explicatiile: <br>
--DF (Data format): acesta este un sir de 4 biti care indica codului QR ce tip de date vrem sa codam. <br>
+- DF (Data format): acesta este un sir de 4 biti care indica codului QR ce tip de date vrem sa codam. <br>
 Exista mai multe tipuri: binar, numeric, alfanumeric si kanji. Fiecare tip are o secventa speciala de biti. <br>
+Mai jos putem vedea cei 4 biti in functie de tipul de date: <br>
+![image](https://github.com/user-attachments/assets/8a91e0f8-e79a-474a-997c-effa9a4448a8)
 Noi o sa lucram cu date in format binar, asa ca cei 4 biti sunt standardizati: "0100", adica DF_3 = 0, DF_2 = 1, DF_1 = 0, DF_0 = 0. <br>
--NC (Number of Characters): este o secventa de 8 biti care codifica numarul de caractere pe care urmeaza un mesaj sa il aiba. <br>
+- NC (Number of Characters): este o secventa de 8 biti care codifica numarul de caractere pe care urmeaza un mesaj sa il aiba. <br>
 Noi o sa vrem sa cream un cod QR pentru mesajul "My QR Code", astfel, daca numaram inclusiv spatiile, ajungem la 10 caractere. <br>
 Daca o sa convertim 10 in binar vom obtine 00001010. Adica octetul NC va avea valoarea: 00001010. <br>
 Mai detaliat NC_7 = 0, NC_6 = 0, NC_5 = 0, NC_4 = 0, NC_3 = 1, NC_2 = 0, NC_1 = 1, NC_0 = 0. <br>
@@ -151,10 +154,14 @@ La final vom obtine: <br>
 Acum codul QR este aproape complet. Mai avem de completat zonele cu portocaliu. <br>
 Dar pentru a face asta avem nevoie de 2 biti de eroare si 3 de masca. <br>
 Cei 2 de eroare sunt dati de nivelul de corectare ales, in cazul nostru L, care are codul standard "01". <br>
+Mai jos vedem tabelul pentru toate nivelurile de corectare de eroare: <br>
+![image](https://github.com/user-attachments/assets/a7e24a3d-061f-4d9b-aa1f-376a6412d606) <br>
 Dar ce este o masca si de unde luam acei biti? <br>
 Oricarui cod, dupa ce este completat, i se aplica o masca pentru a facilita citirea sa de catre scannere. <br>
 O masca nu este nimic altceva decat o interschimbare a bitilor cu 0 si 1 pe anumite zone in functie de un pattern. <br>
 Exista 8 tipuri de masti, dar noi o sa alegem masca cu codul "010". <br>
+Mai jos putem observa cele 8 tipuri de masti: <br>
+![image](https://github.com/user-attachments/assets/9ca866dc-1019-4d99-a393-e10460eb6f46) <br>
 Aceasta presupune inversarea bitilor de 1 si 0 din 3 in 3 coloane, adica pe coloanele 1, 4, 7, 10, 13, 16 si 19. <br>
 Atentie, doar elementele care apartin datelor se schimba, nu si cele definitorii pentru codul QR. <br>
 Acum codul arata in felul urmator: <br>
