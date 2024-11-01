@@ -35,7 +35,29 @@ Acel patrat desenat cu verde in interiorul zonei albastre este intotdeauna negru
 ![Codqr2](https://github.com/user-attachments/assets/a273b450-467e-4f83-929e-38be06cefcac) <br>
 Restul codului QR este destinat datelor efective. <br>
 Aceste date sunt reprezentate in format binar (adica in 0 si 1). Culoarea alb reprezinta 0, iar culoarea negru reprezinta 1. <br>
-Daca am sta sa numaram toate celelate patratele ramase am obtine un total de 208. Asta inseaamna 208 biti cu valori de 0 sau 1. <br> 
+Daca am sta sa numaram toate celelate patratele ramase am obtine un total de 208. Asta inseamna 208 biti cu valori de 0 sau 1. <br>
+Insa datele (caracterele care sunt codate) sunt stocate sub forma de octeti, adica fiecare caracter are un octet, adica 8 biti. <br>
+De aici rezulta ca tot acest spatiu ramas are 208/8 = 26 de octeti de date. <br>
+Asta inseamna ca putem stoca 26 de caractere? <br>
+Ei bine... nu. Este putin mai complicat. <br>
+Arhitectura codurilor QR impune alocarea unor biti de corectare a erorilor. <br> 
+Acest lucru este prevazut pentru a putea corecta eventualele greseli, deteriorari sau parti lipsa care lipsesc din cod. <br>
+
+#### Analogie
+Pentru a face o analogie simpla sa presupunem ca vreau sa trimit un mesaj binar, unde 1 inseamna START si 0 inseamna STOP. <br>
+Daca eu trimit 0, dar informatia este perturbata si ajunge 1, nici nu o sa stiu ca s-a produs o eroare. <br>
+Acum hai sa aloc 2 biti (unul pentru datele propriuzise si unul pentru a semnala eroarea). Astfel, voi trimite 11 pentru START si 00 pentru STOP. <br>
+Daca unul din biti se schimba din diferite probleme o sa ajunga la destinatar 01 sau 10, astfel el o sa stie ca s-a produs o eroare, dar nu isi poate da seama unde s-a produs eroarea. <br>
+De data aceasta voi trimite 3 biti, 111 pentru START si 000 pentru STOP. Daca eu trimit 111 si unul din biti este alterat, destinatarul o sa primeasca o secventa de genul: 110, 101 sau 011. <br>
+Acesta isi va da seama ca eroarea este acel 0 care a aparut si ca mesajul corect transmis era de fapt 111, adica START. <br><br>
+Ceva de genul se intampla si in cazul codurilor QR, dar este mult mai complex. <br>
+Asadar, pentru orice tip de cod exista 4 niveluri de corectare de eroare in functie de ce procent de date pot fi recuperate. L - 7%, M - 15%, Q - 25%, H - 30%. <br>
+Cu cat nivelul e mai mare, cu atat e nevoie de alocarea mai multor biti pentru corectare. <br>
+In exemplul meu am ales un nivel Low (L), pentru a permite cat mai multe date reale sa fie stocate si a nu irosi spatiul pentru biti de eroare, intrucat codul nostru QR nu poate fi deterioarat de conditiile mediului inconjurator. <br>
+Pentru codul QR Model 1 si nivel de corectare a erorilor L, avem 7 octeti pentru corectarea erorilor. Acestia vor fi aflati prin intermediul unui algoritm special numit Reed-Solomon. <br>
+Astfel vor ramane 19 octeti (din cei 26) pentru datele propriuzise. Dintre acestia, 2 octeti = 16 biti sunt rezervati pentru tipul de date stocate (4 biti), numarul de caractere pe care le are mesajul codat (8 biti) si secventa de stop a mesajului (4 biti). Asadar, in final, vom ramane doar cu 17 octeti. Asta inseamna ca putem coda un mesaj de maximum 17 caractere in interiorul unui cod QR Model 1.
+
+
 
 
 
