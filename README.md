@@ -143,6 +143,23 @@ Atentie, doar elementele care apartin datelor se schimba, nu si cele definitorii
 Acum codul arata in felul urmator: <br>
 ![image](https://github.com/user-attachments/assets/ebf1f78a-c65b-4394-b839-6252e0441806) <br>
 Galben reprezinta alb si albastru inchis reprezinta negru. <br>
+Acum putem sa completam si zona portocalie. <br>
+Aceasta e formata din 2 siruri identice de cate 15 biti. <br>
+Primii 5 biti sunt "01010", adica cei 2 de eroare + cei 3 de masca. <br>
+Ceilalti 10 biti sunt generati in functie de acestia dupa un tabel. <br>
+![image](https://github.com/user-attachments/assets/351276ac-d252-404a-90fe-37d68ae5ade4)
+Astfel, in cazul nostru, cei 10 biti sunt: 0110111000. Astfel sirul complet este: 010100110111000. Aceasta valoare trebuie sa fie XOR cu sirul urmator: 101010000010010. <br>
+Astfel ca sirul final este: 111110110101010, asa cum se poate vedea si in tabel. <br>
+Aceasta secventa o sa fie trecuta in zona portocalie in ambele locuri in ordinea indicata. <br>
+Codul QR arata acum asa: <br>
+![image](https://github.com/user-attachments/assets/057cfb4e-098e-4102-9fe4-21c23b714728) <br>
+Hai! Scaneaza-l! Merge? Seamana cu cel de la inceputul documentului? <br>
+Raspusul e DA! <br>
+Asadar, acestia sunt pasii pentru a creea un cod QR de la zero. <br>
+Destul de complicat, dar ideea e foarte interesanta!
+
+
+
 
 
 
