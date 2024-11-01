@@ -1,17 +1,18 @@
 # QR Code Generator
 
-Acest proiect este implementat in Python si presupune crearea unui cod QR de la zero, pentru un mesaj introdus de utilizator. <br>
-Acest document este inca in dezvoltare!
+Acest proiect Python generează un cod QR de la zero, folosind un mesaj introdus de utilizator. <br>
+Acest document este inca în dezvoltare. <br>
 
 ### Ce este un cod QR?
 Un cod QR (Quick Response code) este un tip de cod de bare bidimensional (sub forma matriceala), care poate stoca informații sub forma unei grile de pătrate negre și albe. <br>
 Acesta poate fi citit de dispozitive digitale precum smartphone-uri și scanerele QR. <br>
 
 ### Cum arata un cod QR?
-Un cod QR arata ca un patrat format din diferite patratele albe si negre. Exista mai multe tipuri de coduri QR in functie de capacitatea acestora. <br>
-Cu cat un cod QR este mai mare, cu atat poate stoca mai multe informatii. <br>
-De exemplu, primul model de cod QR are o dimensiune de 21x21 patratele. Al doilea model are 25x25. Versiunea numarul 40 are 177x177. <br>
-Modelul N are o dimensiune mai mare cu 4 linii si 4 coloane fata de Modelul N-1. <br>
+Un cod QR este o matrice de pătrate alb-negre și vine în mai multe versiuni, fiecare cu capacități diferite de stocare. <br>
+Cu cât versiunea este mai mare, cu atât codul poate stoca mai multe date: <br>
+Modelul inițial (Model 1) are 21x21 pătrate. <br>
+Model 2 are 25x25 patrate. <br>
+Fiecare model superior adaugă câte 4 rânduri și coloane, până la versiunea 40, care ajunge la 177x177 pătrate. <br>
 
 ### QR Code Model 1
 In acest proiect voi genera coduri QR Model 1. <br>
@@ -20,7 +21,7 @@ Mai jos se poate observa un astfel de cod QR. Acesta are o dimensiune de 21x21 p
 In continuare o sa aflam cum functioneaza. <br>
 
 ### Componentele Codului QR
-Orice cod QR are anumite componente definitorii. <br>
+Orice cod QR are anumite componente definitorii: <br>
 &emsp;**Formă pătrată:** Codurile QR sunt întotdeauna de formă pătrata. <br>
 &emsp;**Pătrate de aliniere:** În colțurile codului QR există trei pătrate mari, numite pătrate de aliniere, care ajută la orientarea și citirea codului. <br>
 &emsp;Acestea sunt situate în colțurile din stânga sus, dreapta sus și stânga jos. 
@@ -41,10 +42,24 @@ Insa datele (caracterele care sunt codate) sunt stocate sub forma de octeti, adi
 De aici rezulta ca tot acest spatiu ramas are 208/8 = 26 de octeti de date. <br>
 Asta inseamna ca putem stoca 26 de caractere? <br>
 Ei bine... nu. Este putin mai complicat. <br>
+
+### Corectarea erorilor
 Arhitectura codurilor QR impune alocarea unor biti de corectare a erorilor. <br> 
 Acest lucru este prevazut pentru a putea corecta eventualele greseli, deteriorari sau parti lipsa care lipsesc din cod. <br>
+Asadar, pentru orice tip de cod exista 4 niveluri de corectare de eroare in functie de ce procent de date pot fi recuperate. <br> 
+L(Low) - 7%, M(Medium) - 15%, Q(Quartile) - 25%, H(High) - 30%. <br>
+Cu cat nivelul e mai mare, cu atat e nevoie de alocarea mai multor biti pentru corectare. <br>
+In exemplul meu am ales un nivel Low (L), pentru a permite cat mai multe date reale sa fie stocate.<br> 
+Astfel, nu vom irosi spatiul pentru biti de eroare. <br>
+Acesti biti sunt necesari in caz ca vom printa codul QR pe hartie si aceasta poate fi deteriorata. <br>
+Pentru codul QR Model 1 si nivel de corectare a erorilor L, avem 7 octeti pentru corectarea erorilor. <br>
+Acestia vor fi aflati prin intermediul unui algoritm special numit Reed-Solomon. <br>
+Astfel, vor ramane 19 octeti (din cei 26) pentru datele propriuzise. <br>
+Dintre acestia, 2 octeti = 16 biti sunt rezervati pentru tipul de date stocate (4 biti), numarul de caractere pe care le are mesajul codat (8 biti) si secventa de stop a mesajului (4 biti). <br>
+Asadar, in final, vom ramane doar cu 17 octeti. <br>
+Asta inseamna ca putem coda un mesaj de maximum 17 caractere in interiorul unui cod QR Model 1. <br>
 
-#### Analogie
+### Analogie
 Pentru a face o analogie simpla sa presupunem ca vreau sa trimit un mesaj binar, unde 1 inseamna START si 0 inseamna STOP. <br>
 Daca eu trimit 0, dar informatia este perturbata si ajunge 1, nici nu o sa stiu ca s-a produs o eroare. <br>
 Acum hai sa aloc 2 biti (unul pentru datele propriuzise si unul pentru a semnala eroarea). Astfel, voi trimite 11 pentru START si 00 pentru STOP. <br>
@@ -52,11 +67,6 @@ Daca unul din biti se schimba din diferite probleme o sa ajunga la destinatar 01
 De data aceasta voi trimite 3 biti, 111 pentru START si 000 pentru STOP. Daca eu trimit 111 si unul din biti este alterat, destinatarul o sa primeasca o secventa de genul: 110, 101 sau 011. <br>
 Acesta isi va da seama ca eroarea este acel 0 care a aparut si ca mesajul corect transmis era de fapt 111, adica START. <br><br>
 Ceva de genul se intampla si in cazul codurilor QR, dar este mult mai complex. <br>
-Asadar, pentru orice tip de cod exista 4 niveluri de corectare de eroare in functie de ce procent de date pot fi recuperate. L - 7%, M - 15%, Q - 25%, H - 30%. <br>
-Cu cat nivelul e mai mare, cu atat e nevoie de alocarea mai multor biti pentru corectare. <br>
-In exemplul meu am ales un nivel Low (L), pentru a permite cat mai multe date reale sa fie stocate si a nu irosi spatiul pentru biti de eroare, intrucat codul nostru QR nu poate fi deterioarat de conditiile mediului inconjurator. <br>
-Pentru codul QR Model 1 si nivel de corectare a erorilor L, avem 7 octeti pentru corectarea erorilor. Acestia vor fi aflati prin intermediul unui algoritm special numit Reed-Solomon. <br>
-Astfel vor ramane 19 octeti (din cei 26) pentru datele propriuzise. Dintre acestia, 2 octeti = 16 biti sunt rezervati pentru tipul de date stocate (4 biti), numarul de caractere pe care le are mesajul codat (8 biti) si secventa de stop a mesajului (4 biti). Asadar, in final, vom ramane doar cu 17 octeti. Asta inseamna ca putem coda un mesaj de maximum 17 caractere in interiorul unui cod QR Model 1.
 
 ### Convertire zecimal in binar
 Pentru a converti un numar zecimal in binar trebuie sa reusim sa il scriem sub forma unei sume de puteri ale lui 2. <br>
@@ -82,11 +92,13 @@ Ordinea de parcurgere este urmatoarea: <br>
 DF_3 -> DF_2 -> DF_1 -> DF_0 -> NC_7 -> NC_6 -> ... NC_0 -> 1_7 -> 1_6 -> ...10_0 -> 11_7 -> ... -> E7_1 -> E7_0. <br>
 Bun, poate ca pare putin ambiguu pana acum. Ce inseamna, DF, NC, 1, 2, E1 etc? <br>
 Mai jos urmeaza explicatiile: <br>
--DF (Data format): acesta este un sir de 4 biti care indica codului QR ce tip de date vrem sa codam. Exista mai multe tipuri: binar, numeric, alfanumeric si kanji. Fiecare tip are o secventa speciala de biti. <br>
+-DF (Data format): acesta este un sir de 4 biti care indica codului QR ce tip de date vrem sa codam. <br>
+Exista mai multe tipuri: binar, numeric, alfanumeric si kanji. Fiecare tip are o secventa speciala de biti. <br>
 Noi o sa lucram cu date in format binar, asa ca cei 4 biti sunt standardizati: "0100", adica DF_3 = 0, DF_2 = 1, DF_1 = 0, DF_0 = 0. <br>
 -NC (Number of Characters): este o secventa de 8 biti care codifica numarul de caractere pe care urmeaza un mesaj sa il aiba. <br>
 Noi o sa vrem sa cream un cod QR pentru mesajul "My QR Code", astfel, daca numaram inclusiv spatiile, ajungem la 10 caractere. <br>
-Daca o sa convertim 10 in binar vom obtine 00001010. Adica octetul NC va avea valoarea: 00001010. Mai detaliat NC_7 = 0, NC_6 = 0, NC_5 = 0, NC_4 = 0, NC_3 = 1, NC_2 = 0, NC_1 = 1, NC_0 = 0. <br>
+Daca o sa convertim 10 in binar vom obtine 00001010. Adica octetul NC va avea valoarea: 00001010. <br>
+Mai detaliat NC_7 = 0, NC_6 = 0, NC_5 = 0, NC_4 = 0, NC_3 = 1, NC_2 = 0, NC_1 = 1, NC_0 = 0. <br>
 Asta inseamana ca pana acum am completat primii 4 + 8 biti in felul urmator: <br>
 ![image](https://github.com/user-attachments/assets/8fc32fe5-0339-41da-b057-7bc1b08ea3cc) <br>
 Acum, mesajul nostru are 10 caractere. Deci o sa completam toate patratelele incepand cu 1_7 -> 1_6 -> ... -> 10_1 -> 10_0. <br>
@@ -148,7 +160,7 @@ Acum putem sa completam si zona portocalie. <br>
 Aceasta e formata din 2 siruri identice de cate 15 biti. <br>
 Primii 5 biti sunt "01010", adica cei 2 de eroare + cei 3 de masca. <br>
 Ceilalti 10 biti sunt generati in functie de acestia dupa un tabel. <br>
-![image](https://github.com/user-attachments/assets/351276ac-d252-404a-90fe-37d68ae5ade4)
+![image](https://github.com/user-attachments/assets/351276ac-d252-404a-90fe-37d68ae5ade4) <br>
 Astfel, in cazul nostru, cei 10 biti sunt: 0110111000. Astfel sirul complet este: 010100110111000. Aceasta valoare trebuie sa fie XOR cu sirul urmator: 101010000010010. <br>
 Astfel ca sirul final este: 111110110101010, asa cum se poate vedea si in tabel. <br>
 Aceasta secventa o sa fie trecuta in zona portocalie in ambele locuri in ordinea indicata. <br>
