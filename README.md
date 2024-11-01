@@ -1,7 +1,7 @@
 # QR Code Generator
 
-Acest proiect Python generează un cod QR de la zero, folosind un mesaj introdus de utilizator. <br>
-Acest document este inca în dezvoltare. <br>
+Acest proiect Python generează un cod QR de la zero, folosind un mesaj introdus de utilizator. <br><br>
+!!!Acest document este inca în dezvoltare!!! <br>
 
 ### Ce este un cod QR?
 Un cod QR (Quick Response code) este un tip de cod de bare bidimensional (sub forma matriceala), care poate stoca informații sub forma unei grile de pătrate negre și albe. <br>
