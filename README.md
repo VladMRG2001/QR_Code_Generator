@@ -65,7 +65,7 @@ Daca eu trimit 0, dar informatia este perturbata si ajunge 1, nici nu o sa stiu 
 Acum hai sa aloc 2 biti (unul pentru datele propriuzise si unul pentru a semnala eroarea). Astfel, voi trimite 11 pentru START si 00 pentru STOP. <br>
 Daca unul din biti se schimba din diferite probleme o sa ajunga la destinatar 01 sau 10, astfel el o sa stie ca s-a produs o eroare, dar nu isi poate da seama unde s-a produs eroarea. <br>
 De data aceasta voi trimite 3 biti, 111 pentru START si 000 pentru STOP. Daca eu trimit 111 si unul din biti este alterat, destinatarul o sa primeasca o secventa de genul: 110, 101 sau 011. <br>
-Acesta isi va da seama ca eroarea este acel 0 care a aparut si ca mesajul corect transmis era de fapt 111, adica START. <br><br>
+Acesta isi va da seama ca eroarea este acel 0 care a aparut si ca mesajul corect transmis era de fapt 111, adica START. <br>
 Ceva de genul se intampla si in cazul codurilor QR, dar este mult mai complex. <br>
 
 ### Convertire zecimal in binar
@@ -166,7 +166,12 @@ Astfel ca sirul final este: 111110110101010, asa cum se poate vedea si in tabel.
 Aceasta secventa o sa fie trecuta in zona portocalie in ambele locuri in ordinea indicata. <br>
 Codul QR arata acum asa: <br>
 ![image](https://github.com/user-attachments/assets/057cfb4e-098e-4102-9fe4-21c23b714728) <br>
-Hai! Scaneaza-l! Merge? Seamana cu cel de la inceputul documentului? <br>
+Hai! Scaneaza-l! Merge? <br>
+Probabil ca merge daca te chinui putin, deoarece e colorat cu verde si nuante de gri si are si linii peste el. <br>
+Hai sa ii scoatem aceste detalii si sa il lasam doar alb si negru. <br>
+![image](https://github.com/user-attachments/assets/042cf435-412d-47b7-b880-7404bed85e20) <br>
+Acum e mult mai bine. <br>
+Seamana cu cel de la inceputul documentului? <br>
 Raspusul e DA! <br>
 Asadar, acestia sunt pasii pentru a creea un cod QR de la zero. <br>
 Destul de complicat, dar ideea e foarte interesanta!
