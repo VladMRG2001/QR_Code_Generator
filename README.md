@@ -36,7 +36,8 @@ Mai mult, in zona delimitata cu albastru avem alte patratele care nu contin date
 Acel patrat desenat cu verde in interiorul zonei albastre este intotdeauna negru.<br>
 ![Codqr2](https://github.com/user-attachments/assets/a273b450-467e-4f83-929e-38be06cefcac) <br>
 Restul codului QR este destinat datelor efective. <br>
-Aceste date sunt reprezentate in format binar (adica in 0 si 1). Culoarea alb reprezinta 0, iar culoarea negru reprezinta 1. <br>
+Aceste date sunt reprezentate in format binar (adica in 0 si 1). <br>
+Culoarea alb reprezinta 0, iar culoarea negru reprezinta 1. <br>
 Daca am sta sa numaram toate celelate patratele ramase am obtine un total de 208. Asta inseamna 208 biti cu valori de 0 sau 1. <br>
 Insa datele (caracterele care sunt codate) sunt stocate sub forma de octeti, adica fiecare caracter are un octet, adica 8 biti. <br>
 De aici rezulta ca tot acest spatiu ramas are 208/8 = 26 de octeti de date. <br>
