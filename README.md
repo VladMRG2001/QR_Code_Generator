@@ -112,6 +112,7 @@ Noi o sa lucram cu date in format binar, asa ca cei 4 biti sunt standardizati: "
 - NC (Number of Characters): este o secventa de 8 biti care codifica numarul de caractere pe care urmeaza un mesaj sa il aiba. <br>
 - 1 - 17: Caracterele codate pe 8 biti. <br>
 - E1 - E7: Octetii pentru corectarea erorii. <br><br>
+
 Noi o sa vrem sa cream un cod QR pentru mesajul "My QR Code", astfel, daca numaram inclusiv spatiile, ajungem la 10 caractere. <br>
 Daca o sa convertim 10 in binar vom obtine 00001010. Adica octetul NC va avea valoarea: 00001010. <br>
 Mai detaliat NC_7 = 0, NC_6 = 0, NC_5 = 0, NC_4 = 0, NC_3 = 1, NC_2 = 0, NC_1 = 1, NC_0 = 0. <br>
