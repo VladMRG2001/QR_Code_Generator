@@ -64,7 +64,7 @@ Acesti biti sunt necesari in caz ca vom printa codul QR pe hartie si aceasta poa
 Pentru codul QR Model 1 si nivel de corectare a erorilor L, avem 7 octeti pentru corectarea erorilor. <br>
 Acestia vor fi aflati prin intermediul unui algoritm special numit Reed-Solomon. <br>
 Astfel, vor ramane 19 octeti (din cei 26) pentru datele propriuzise. <br>
-Dintre acestia, 2 octeti = 16 biti sunt rezervati pentru tipul de date stocate (4 biti), numarul de caractere pe care le are mesajul codat (8 biti) si secventa de stop a mesajului (4 biti). <br>
+Dintre acestia, 2 octeti (adica 16 biti) sunt rezervati pentru tipul de date stocate (4 biti), numarul de caractere pe care le are mesajul codat (8 biti) si secventa de stop a mesajului (4 biti). <br>
 Asadar, in final, vom ramane doar cu 17 octeti. <br>
 Asta inseamna ca putem coda un mesaj de maximum 17 caractere in interiorul unui cod QR Model 1. <br>
 
