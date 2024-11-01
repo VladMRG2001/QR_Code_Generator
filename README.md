@@ -202,10 +202,12 @@ Hai! Scaneaza-l! Merge? <br>
 Probabil ca merge daca te chinui putin, deoarece e colorat cu verde si nuante de gri si are si linii peste el. <br>
 Hai sa ii scoatem aceste detalii si sa il lasam doar alb si verde. <br>
 ![image](https://github.com/user-attachments/assets/7eee7186-8e80-4c77-ba70-6fc352a316b9) <br><br>
-Aici era codul QR initial pentru comparatie. <br>
+Aici este codul QR initial pentru comparatie. <br>
 ![image](https://github.com/user-attachments/assets/042cf435-412d-47b7-b880-7404bed85e20) <br>
 Seamana cele doua coduri? <br>
 Raspusul e DA! Pentru ca sunt la fel! <br>
 Asadar, acestia sunt pasii pentru a creea un cod QR de la zero. <br>
+Pentru celelalte versiuni de cod QR ideea este aceeasi, doar ca e mai mult de munca. <br><br>
+Concluzie: <br>
 Destul de complicat, dar ideea e foarte interesanta!
 
