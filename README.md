@@ -103,7 +103,7 @@ Mai jos urmeaza explicatiile: <br>
 - DF (Data format): acesta este un sir de 4 biti care indica codului QR ce tip de date vrem sa codam. <br>
 Exista mai multe tipuri: binar, numeric, alfanumeric si kanji. Fiecare tip are o secventa speciala de biti. <br>
 Mai jos putem vedea cei 4 biti in functie de tipul de date: <br>
-![image](https://github.com/user-attachments/assets/8a91e0f8-e79a-474a-997c-effa9a4448a8)
+![image](https://github.com/user-attachments/assets/8a91e0f8-e79a-474a-997c-effa9a4448a8) <br>
 Noi o sa lucram cu date in format binar, asa ca cei 4 biti sunt standardizati: "0100", adica DF_3 = 0, DF_2 = 1, DF_1 = 0, DF_0 = 0. <br>
 - NC (Number of Characters): este o secventa de 8 biti care codifica numarul de caractere pe care urmeaza un mesaj sa il aiba. <br>
 - 1 - 17: Caracterele codate pe 8 biti. <br>
