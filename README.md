@@ -126,10 +126,12 @@ Astfel ajungem la valorile: <br>
 Atentie ca aceste numere binare sa aibe 8 biti. <br>
 Daca nuamrul poate fi reprezentat pe 6 biti trebuie sa includem doi biti 0 in fata lui. <br>
 Pentru a pune aceste valori in codul QR trebuie sa tinem cont de puteri. <br>
-De exemplu, caracterul Q este al 4-lea din sir si are valoarea in binar 01010001. Astfel, vom completa in felul urmator: 
+De exemplu, caracterul Q este al 4-lea din sir si are valoarea in binar 01010001. <br>
+Astfel, vom completa in felul urmator: <br> 
 4_7 = 0, 4_6 = 1, 4_5 = 0, 4_4 = 1, 4_3 = 0, 4_2 = 0, 4_1 = 0, 4_0 = 1. <br> 
-Se procedeaza la fel pentru toate caracterele din sir. La final se va obtine: <br>
-!Atentie: 1_0 trebuia sa fie tot verde (negru), e o gresala! <br>
+Se procedeaza la fel pentru toate caracterele din sir. <br><br>
+La final se va obtine: <br>
+!!!Atentie: 1_0 trebuia sa fie tot verde (negru), e o gresala! <br>
 ![image](https://github.com/user-attachments/assets/0e836e47-22c9-4ba1-b5d5-0e2385076b58) <br>
 Ok, dar nu avem nici macar jumatate din cod completat. Nicio problema! <br>
 Acum am terminat de codat mesajul nostru. <br>
@@ -140,7 +142,7 @@ Da, daca aveam un mesaj de 17 caractere am fi procedat asa, dar noi avem doar 10
 Restul spatiului nu va fi lasat gol. Se va completa cu o secventa de 16 biti de padding care pot fi impartiti in 2 octeti. <br>
 Acestia sunt "11101100 00010001" si vor alterna in aceasta ordine de cate ori este nevoie pentru a completa spatiul necesar. <br>
 Noi am ocupat doar 10 octeti de date, asa ca o sa avem nevoie de 7 octeti de padding. <br>
-Acestia sunt: 11101100 00010001 11101100 00010001 11101100 00010001 11101100 si se vor completa in continuare. <br>
+Acestia sunt: 11101100 00010001 11101100 00010001 11101100 00010001 11101100 si se vor adauga in continuare. <br><br>
 Dupa completarea acestor biti de padding o sa obtinem: <br>
 ![image](https://github.com/user-attachments/assets/705b94b1-e21f-4bd2-89f4-4cc1319996e6) <br>
 
@@ -160,7 +162,7 @@ Acestea vor fi introduse ca date de input in Algoritmul Reed-Solomon care va gen
 Scriptul pentru acest algoritm este prezent in codul sursa. <br>
 Cele 7 numere generate sunt: 183, 116, 230, 17, 230, 117, 247. <br>
 Adica in binar vom avea: 10110111 01110100 11100110 00010001 11100110 01110101 11110111 <br>
-Aceste valori trebuie adaugate in dreptul campurilor pentru octetii de eroare. <br>
+Aceste valori trebuie adaugate in dreptul campurilor pentru octetii de eroare. <br><br>
 La final vom obtine: <br>
 ![image](https://github.com/user-attachments/assets/e60da048-aaab-40a0-9139-d73b139cbb6a) <br>
 Acum codul QR este aproape complet. Mai avem de completat zonele cu portocaliu. <br>
@@ -184,9 +186,10 @@ Aceasta e formata din 2 siruri identice de cate 15 biti. <br>
 Primii 5 biti sunt "01010", adica cei 2 de eroare + cei 3 de masca. <br>
 Ceilalti 10 biti sunt generati in functie de acestia dupa un tabel. <br>
 ![image](https://github.com/user-attachments/assets/351276ac-d252-404a-90fe-37d68ae5ade4) <br>
-Astfel, in cazul nostru, cei 10 biti sunt: 0110111000. Astfel sirul complet este: 010100110111000. Aceasta valoare trebuie sa fie XOR cu sirul urmator: 101010000010010. <br>
+Astfel, in cazul nostru, cei 10 biti sunt: 0110111000. Astfel sirul complet este: 010100110111000. <br> 
+Aceasta valoare trebuie sa fie XOR cu sirul urmator: 101010000010010. <br>
 Astfel ca sirul final este: 111110110101010, asa cum se poate vedea si in tabel. <br>
-Aceasta secventa o sa fie trecuta in zona portocalie in ambele locuri in ordinea indicata. <br>
+Aceasta secventa o sa fie trecuta in zona portocalie in ambele locuri in ordinea indicata. <br><br>
 Codul QR arata acum asa: <br>
 ![image](https://github.com/user-attachments/assets/057cfb4e-098e-4102-9fe4-21c23b714728) <br>
 Hai! Scaneaza-l! Merge? <br>
