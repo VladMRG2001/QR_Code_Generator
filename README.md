@@ -159,7 +159,7 @@ Modul de aflare a acestora e destul de complicat. <br>
 Recomand folosirea unui calculator online sau a unui script in python. <br>
 Pentru a ii afla trebuie sa concatenam toti bitii introdusi pana acum. Adica vom avea: <br>
 4 (DF) + 8 (NC) + 10 * 8 (Mesajul) + 4 (Stop) + 7 * 8 (Padding) = 152 biti. <br> 
-Acestia vor afisati fin in ordinea in care sunt scrisi in cod, vor fi delimitati in grupuri de 8 biti si apoi convertati in 19 valori zecimale. <br>
+Acestia vor fi afisati in ordinea in care sunt scrisi in cod, vor fi delimitati in grupuri de 8 biti si apoi convertiti in 19 valori zecimale. <br>
 In cazul nostru avem: <br>
 01000000 10100100 11010111 10010010 00000101 00010101 00100010 00000100 00110110 11110110 01000110 01010000 11101100 00010001 11101100 00010001 11101100 00010001 11101100 <br>
 Daca le convertim in zecimal avem valorile: <br>
