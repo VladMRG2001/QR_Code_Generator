@@ -85,13 +85,15 @@ Adica, 150 = 1 0 0 1 0 1 1 0 in binar. <br>
 Pentru a converti din binar in zecimal se procedeaza invers. <br>
 10011100 = 2^7 + 2^4 + 2^3 + 2^2 = se calculeaza. <br>
 
-### Exemplu practic - pas cu pas
+## Exemplu practic - pas cu pas
 Acum, pentru ca am explicat putin cum functioneaza un cod QR, hai sa contruim unul de la zero. <br>
 Pentru inceput, vom exclude zonele deja dicutate. Asfel vom ramane cu cei 208 biti de date. <br>
 Plecam de la imaginea de mai jos. <br>
 ![image](https://github.com/user-attachments/assets/b2021dab-85c6-4a3c-90e4-f4b9a83f42a3) <br>
 In aceasta imagine am grupat spatiul disponibil in octeti, asa cum am discutat anterior. <br>
 Astfel (aproape) fiecare chenar are 8 biti, adica 8 patratele. <br>
+
+### Completarea codului QR
 Completarea codului QR incepe din coltul din dreapta jos (DF_3) pe desen si continua in forma de zig-zag pe tot restul spatiului. <br>
 Ordinea de parcurgere este urmatoarea: <br>
 DF_3 -> DF_2 -> DF_1 -> DF_0 -> NC_7 -> NC_6 -> ... NC_0 -> 1_7 -> 1_6 -> ...10_0 -> 11_7 -> ... -> E7_1 -> E7_0. <br>
@@ -104,7 +106,7 @@ Mai jos putem vedea cei 4 biti in functie de tipul de date: <br>
 ![image](https://github.com/user-attachments/assets/8a91e0f8-e79a-474a-997c-effa9a4448a8)
 Noi o sa lucram cu date in format binar, asa ca cei 4 biti sunt standardizati: "0100", adica DF_3 = 0, DF_2 = 1, DF_1 = 0, DF_0 = 0. <br>
 - NC (Number of Characters): este o secventa de 8 biti care codifica numarul de caractere pe care urmeaza un mesaj sa il aiba. <br>
-- 1-17: Caracterele codate pe 8 biti. <br>
+- 1 - 17: Caracterele codate pe 8 biti. <br>
 - E1 - E7: Octetii pentru corectarea erorii. <br><br>
 Noi o sa vrem sa cream un cod QR pentru mesajul "My QR Code", astfel, daca numaram inclusiv spatiile, ajungem la 10 caractere. <br>
 Daca o sa convertim 10 in binar vom obtine 00001010. Adica octetul NC va avea valoarea: 00001010. <br>
@@ -141,9 +143,12 @@ Noi am ocupat doar 10 octeti de date, asa ca o sa avem nevoie de 7 octeti de pad
 Acestia sunt: 11101100 00010001 11101100 00010001 11101100 00010001 11101100 si se vor completa in continuare. <br>
 Dupa completarea acestor biti de padding o sa obtinem: <br>
 ![image](https://github.com/user-attachments/assets/705b94b1-e21f-4bd2-89f4-4cc1319996e6) <br>
+
+### Adaugarea octetilor de corectare a erorilor
 Acum am terminat de introdus toate datele, dar observam ca inca mai avem de introdus 7 octeti numiti E1 - E7. <br>
 Acestia sunt cei 7 octeti de corectare a erorii necesari pentru un cod QR Model 1 cu corectare L. <br>
-Modul de aflare a acestora e destul de complicat. Recomand folosirea unui calculator online sau a unui script in python. <br>
+Modul de aflare a acestora e destul de complicat. <br>
+Recomand folosirea unui calculator online sau a unui script in python. <br>
 Pentru a ii afla trebuie sa concatenam toti bitii introdusi pana acum. Adica vom avea: <br>
 4 (DF) + 8 (NC) + 10 * 8 (Mesajul) + 4 (Stop) + 7 * 8 (Padding) = 152 biti. <br> 
 Acestia vor afisati fin in ordinea in care sunt scrisi in cod, vor fi delimitati in grupuri de 8 biti si apoi convertati in 19 valori zecimale. <br>
@@ -151,8 +156,9 @@ In cazul nostru avem: <br>
 01000000 10100100 11010111 10010010 00000101 00010101 00100010 00000100 00110110 11110110 01000110 01010000 11101100 00010001 11101100 00010001 11101100 00010001 11101100 <br>
 Daca le convertim in zecimal avem valorile: <br>
 64 164 215 146 5 21 34 4 54 246 70 80 236 17 236 17 236 17 236 <br>
-Acestea vor fi introduce ca date de input in Algoritmul Reed-Solomon si va genera 7 numere de corectare a erorii. <br>
-Acestea sunt: 183, 116, 230, 17, 230, 117, 247. <br>
+Acestea vor fi introduse ca date de input in Algoritmul Reed-Solomon care va genera 7 numere de corectare a erorii. <br>
+Scriptul pentru acest algoritm este prezent in codul sursa. <br>
+Cele 7 numere generate sunt: 183, 116, 230, 17, 230, 117, 247. <br>
 Adica in binar vom avea: 10110111 01110100 11100110 00010001 11100110 01110101 11110111 <br>
 Aceste valori trebuie adaugate in dreptul campurilor pentru octetii de eroare. <br>
 La final vom obtine: <br>
