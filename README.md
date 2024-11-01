@@ -26,4 +26,18 @@ Orice cod QR are anumite componente definitorii. <br>
 &emsp;De la versiunea 2 in sus exista un patrat mai mic si in partea dreapta jos.<br>
 &emsp;**Pătrățele de sincronizare:** Cele 3 patrate mari sunt unite prin intermediul unor linii de patratele care alterneaza intre alb si negru. <br>
 &emsp;**Quiet zone:** În jurul codului QR există o margine albă, numită „quiet zone”, care ajută la separarea codului QR de alte elemente vizuale. <br>
-&emsp;**Informație:** Informația stocată în codul QR poate include URL-uri, texte, numere de telefon, adrese de e-mail sau alte tipuri de date. <br>
+&emsp;**Informație:** Informația stocată în codul QR poate include URL-uri, texte, numere de telefon, adrese de e-mail sau alte tipuri de date. <br><br>
+In imaginea de mai jos am separat zonele definitorii ale oricarui cod QR. <br>
+Zonele inconjurate cu linie rosie sunt identice pentru toate codurile QR. <br>
+![Codqr1](https://github.com/user-attachments/assets/212ec9ac-f552-4c37-9935-492455ae1bc4) <br>
+Mai mult, in zona delimitata cu albastru avem alte patratele care nu contin datele proriuzise, o sa vorbim despre ele mai tarziu. <br>
+Acel patrat desenat cu verde in interiorul zonei albastre este intotdeauna negru.<br>
+![Codqr2](https://github.com/user-attachments/assets/a273b450-467e-4f83-929e-38be06cefcac) <br>
+Restul codului QR este destinat datelor efective. <br>
+Aceste date sunt reprezentate in format binar (adica in 0 si 1). Culoarea alb reprezinta 0, iar culoarea negru reprezinta 1. <br>
+Daca am sta sa numaram toate celelate patratele ramase am obtine un total de 208. Asta inseaamna 208 biti cu valori de 0 sau 1. <br> 
+
+
+
+
+
