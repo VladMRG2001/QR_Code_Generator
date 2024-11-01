@@ -10,27 +10,30 @@ Acesta poate fi citit de dispozitive digitale precum smartphone-uri și scanerel
 ### Cum arata un cod QR?
 Un cod QR este o matrice de pătrate alb-negre și vine în mai multe versiuni, fiecare cu capacități diferite de stocare. <br>
 Cu cât versiunea este mai mare, cu atât codul poate stoca mai multe date: <br>
-Modelul inițial (Model 1) are 21x21 pătrate. <br>
-Model 2 are 25x25 patrate. <br>
+Modelul inițial (Model 1) are 21x21 patrate. <br>
+A doua versiune (Model 2) are 25x25 patrate. <br>
 Fiecare model superior adaugă câte 4 rânduri și coloane, până la versiunea 40, care ajunge la 177x177 pătrate. <br>
 
 ### QR Code Model 1
 In acest proiect voi genera coduri QR Model 1. <br>
-Mai jos se poate observa un astfel de cod QR. Acesta are o dimensiune de 21x21 pixeli. Daca il scanam vom observa mesajul "My QR Code". <br>
+Mai jos se poate observa un astfel de cod QR. <br>
+Acesta are o dimensiune de 21x21 pixeli. Daca il scanam vom observa mesajul "My QR Code". <br>
 <img src="https://github.com/user-attachments/assets/c24eeb4d-1679-4151-9eaf-784150b1e8d0" width="200"> <br>
 In continuare o sa aflam cum functioneaza. <br>
 
 ### Componentele Codului QR
 Orice cod QR are anumite componente definitorii: <br>
-&emsp;**Formă pătrată:** Codurile QR sunt întotdeauna de formă pătrata. <br>
-&emsp;**Pătrate de aliniere:** În colțurile codului QR există trei pătrate mari, numite pătrate de aliniere, care ajută la orientarea și citirea codului. <br>
-&emsp;Acestea sunt situate în colțurile din stânga sus, dreapta sus și stânga jos. 
-&emsp;De la versiunea 2 in sus exista un patrat mai mic si in partea dreapta jos.<br>
-&emsp;**Pătrățele de sincronizare:** Cele 3 patrate mari sunt unite prin intermediul unor linii de patratele care alterneaza intre alb si negru. <br>
-&emsp;**Quiet zone:** În jurul codului QR există o margine albă, numită „quiet zone”, care ajută la separarea codului QR de alte elemente vizuale. <br>
-&emsp;**Informație:** Informația stocată în codul QR poate include URL-uri, texte, numere de telefon, adrese de e-mail sau alte tipuri de date. <br><br>
+&emsp;**- Formă pătrată:** Codurile QR sunt întotdeauna de formă pătrata. <br>
+&emsp;**- Pătrate de aliniere:** În colțurile codului QR există trei pătrate mari, numite pătrate de aliniere, care ajută la orientarea și citirea codului. <br>
+&emsp; Acestea sunt situate în colțurile din stânga sus, dreapta sus și stânga jos. <br>
+&emsp; De la versiunea 2 in sus exista un patrat mai mic si in partea dreapta jos.<br>
+&emsp;**- Pătrățele de sincronizare:** Cele 3 patrate mari sunt unite prin intermediul unor linii de patratele care alterneaza intre alb si negru. <br>
+&emsp;**- Quiet zone:** În jurul codului QR există o margine albă, numită „quiet zone”, care ajută la separarea codului QR de alte elemente vizuale. <br>
+&emsp;**- Informație:** Informația stocată în codul QR poate include URL-uri, texte, numere de telefon, adrese de e-mail sau alte tipuri de date. <br><br>
+
+### Elementele definitorii 
 In imaginea de mai jos am separat zonele definitorii ale oricarui cod QR. <br>
-Zonele inconjurate cu linie rosie sunt identice pentru toate codurile QR. <br>
+Zonele inconjurate cu linie rosie sunt identice pentru orice QR. <br>
 ![Codqr1](https://github.com/user-attachments/assets/212ec9ac-f552-4c37-9935-492455ae1bc4) <br>
 Mai mult, in zona delimitata cu albastru avem alte patratele care nu contin datele proriuzise, o sa vorbim despre ele mai tarziu. <br>
 Acel patrat desenat cu verde in interiorul zonei albastre este intotdeauna negru.<br>
