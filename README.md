@@ -52,7 +52,10 @@ Ei bine... nu. Este putin mai complicat. <br>
 Arhitectura codurilor QR impune alocarea unor biti de corectare a erorilor. <br> 
 Acest lucru este prevazut pentru a putea corecta eventualele greseli, deteriorari sau parti care lipsesc din cod. <br>
 Asadar, pentru orice tip de cod exista 4 niveluri de corectare de eroare in functie de ce procent de date pot fi recuperate. <br> 
-L(Low) - 7%, M(Medium) - 15%, Q(Quartile) - 25%, H(High) - 30%. <br>
+- L(Low) - 7%,
+- M(Medium) - 15%,
+- Q(Quartile) - 25%,
+- H(High) - 30%. <br>
 Cu cat nivelul e mai mare, cu atat e nevoie de alocarea mai multor biti pentru corectare. <br>
 In exemplul meu am ales un nivel Low (L), pentru a permite cat mai multe date reale sa fie stocate.<br> 
 Astfel, nu vom irosi spatiul pentru biti de eroare. <br>
