@@ -91,9 +91,9 @@ Pentru a converti din binar in zecimal se procedeaza invers. <br>
 10011100 = 2^7 + 2^4 + 2^3 + 2^2 = se calculeaza. <br>
 
 ## Exemplu practic - pas cu pas
-Acum, pentru ca am explicat putin cum functioneaza un cod QR, hai sa contruim unul de la zero. <br>
-Pentru inceput, vom exclude zonele deja dicutate. Asfel vom ramane cu cei 208 biti de date. <br>
-Plecam de la imaginea de mai jos. <br>
+Acum, pentru ca am explicat putin cum functioneaza un cod QR, hai sa construim unul de la zero. <br>
+Pentru inceput, vom exclude zonele deja discutate. Asfel, vom ramane cu cei 208 biti de date. <br>
+Plecam de la imaginea de mai jos. <br><br>
 ![image](https://github.com/user-attachments/assets/b2021dab-85c6-4a3c-90e4-f4b9a83f42a3) <br>
 In aceasta imagine am grupat spatiul disponibil in octeti, asa cum am discutat anterior. <br>
 Astfel (aproape) fiecare chenar are 8 biti, adica 8 patratele. <br>
@@ -129,8 +129,8 @@ Atentie la diferenta intre litere mari si mici si la faptul ca inclusiv spatiul 
 Bun, acum tot ce ramane de facut este sa convertim aceste valori in binar. Putem folosi un calculator. <br>
 Astfel ajungem la valorile: <br>
 01001101 01111001 00100000 01010001 01010010 00100000 01000011 01101111 01100100 01100101. <br>
-Atentie ca aceste numere binare sa aibe 8 biti. <br>
-Daca nuamrul poate fi reprezentat pe 6 biti trebuie sa includem doi biti 0 in fata lui. <br>
+Atentie ca aceste numere binare sa aiba 8 biti. <br>
+Daca numarul poate fi reprezentat pe 6 biti trebuie sa includem doi biti 0 in fata lui. <br>
 Pentru a pune aceste valori in codul QR trebuie sa tinem cont de puteri. <br>
 De exemplu, caracterul Q este al 4-lea din sir si are valoarea in binar 01010001. <br>
 Astfel, vom completa in felul urmator: <br> 
