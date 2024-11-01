@@ -95,7 +95,8 @@ Astfel (aproape) fiecare chenar are 8 biti, adica 8 patratele. <br>
 Completarea codului QR incepe din coltul din dreapta jos (DF_3) pe desen si continua in forma de zig-zag pe tot restul spatiului. <br>
 Ordinea de parcurgere este urmatoarea: <br>
 DF_3 -> DF_2 -> DF_1 -> DF_0 -> NC_7 -> NC_6 -> ... NC_0 -> 1_7 -> 1_6 -> ...10_0 -> 11_7 -> ... -> E7_1 -> E7_0. <br>
-Bun, poate ca pare putin ambiguu pana acum. Ce inseamna, DF, NC, 1, 2, E1 etc? <br>
+Bun, poate ca pare putin ambiguu pana acum. <br>
+Ce inseamna, DF, NC, 1, 2, E1 etc? <br><br>
 Mai jos urmeaza explicatiile: <br>
 - DF (Data format): acesta este un sir de 4 biti care indica codului QR ce tip de date vrem sa codam. <br>
 Exista mai multe tipuri: binar, numeric, alfanumeric si kanji. Fiecare tip are o secventa speciala de biti. <br>
@@ -103,29 +104,34 @@ Mai jos putem vedea cei 4 biti in functie de tipul de date: <br>
 ![image](https://github.com/user-attachments/assets/8a91e0f8-e79a-474a-997c-effa9a4448a8)
 Noi o sa lucram cu date in format binar, asa ca cei 4 biti sunt standardizati: "0100", adica DF_3 = 0, DF_2 = 1, DF_1 = 0, DF_0 = 0. <br>
 - NC (Number of Characters): este o secventa de 8 biti care codifica numarul de caractere pe care urmeaza un mesaj sa il aiba. <br>
+- 1-17: Caracterele codate pe 8 biti. <br>
+- E1 - E7: Octetii pentru corectarea erorii. <br><br>
 Noi o sa vrem sa cream un cod QR pentru mesajul "My QR Code", astfel, daca numaram inclusiv spatiile, ajungem la 10 caractere. <br>
 Daca o sa convertim 10 in binar vom obtine 00001010. Adica octetul NC va avea valoarea: 00001010. <br>
 Mai detaliat NC_7 = 0, NC_6 = 0, NC_5 = 0, NC_4 = 0, NC_3 = 1, NC_2 = 0, NC_1 = 1, NC_0 = 0. <br>
 Asta inseamana ca pana acum am completat primii 4 + 8 biti in felul urmator: <br>
 ![image](https://github.com/user-attachments/assets/8fc32fe5-0339-41da-b057-7bc1b08ea3cc) <br>
 Acum, mesajul nostru are 10 caractere. Deci o sa completam toate patratelele incepand cu 1_7 -> 1_6 -> ... -> 10_1 -> 10_0. <br>
-Dar cum? Adica literele nu au un cod, sunt litere. <br>
-Ba da, au un cod. Toate caracterele au atribuit un numar de la 0 la 127. Aceste valori sunt prezentate in tabelul ASCII. <br>
+Dar cum? Literele nu au un cod, sunt... litere. <br>
+Ba da, au un cod. Toate caracterele au atribuit un numar de la 0 la 127. <br>
+Aceste valori sunt prezentate in tabelul ASCII. <br>
 ![image](https://github.com/user-attachments/assets/2111638a-4119-44c6-a436-4f2bf7896881) <br>
 Acolo, observam faptul ca textul nostru "My QR Code" poate fi scris ca "77 121 32 81 82 32 67 111 100 101". <br>
 Atentie la diferenta intre litere mari si mici si la faptul ca inclusiv spatiul are un cod, acela este 32. <br> 
 Bun, acum tot ce ramane de facut este sa convertim aceste valori in binar. Putem folosi un calculator. <br>
-Astfel ajungem la valorile: 01001101 01111001 00100000 01010001 01010010 00100000 01000011 01101111 01100100 01100101. <br>
-Atentie ca aceste numere binare sa aiba 8 biti. Daca nuamrul poate fi reprezentat pe 6 biti trebuie sa includem doi biti 0 in fata lui. <br>
+Astfel ajungem la valorile: <br>
+01001101 01111001 00100000 01010001 01010010 00100000 01000011 01101111 01100100 01100101. <br>
+Atentie ca aceste numere binare sa aibe 8 biti. <br>
+Daca nuamrul poate fi reprezentat pe 6 biti trebuie sa includem doi biti 0 in fata lui. <br>
 Pentru a pune aceste valori in codul QR trebuie sa tinem cont de puteri. <br>
-De exemplu, caracterul Q este al 4-lea din sir si are valoarea in binar 01010001. Asfel vom completa in felul urmator: 
+De exemplu, caracterul Q este al 4-lea din sir si are valoarea in binar 01010001. Astfel, vom completa in felul urmator: 
 4_7 = 0, 4_6 = 1, 4_5 = 0, 4_4 = 1, 4_3 = 0, 4_2 = 0, 4_1 = 0, 4_0 = 1. <br> 
 Se procedeaza la fel pentru toate caracterele din sir. La final se va obtine: <br>
 !Atentie: 1_0 trebuia sa fie tot verde (negru), e o gresala! <br>
 ![image](https://github.com/user-attachments/assets/0e836e47-22c9-4ba1-b5d5-0e2385076b58) <br>
-Ok, dar nu avem nici macar jumatate din cod completat. <br>
-Nicio problema. <br>
-Acum am terminat de codat mesajul nostru. Pentru a semnala acest lucru trebuie sa adaugam secventa de stop, adica codul "0000". <br>
+Ok, dar nu avem nici macar jumatate din cod completat. Nicio problema! <br>
+Acum am terminat de codat mesajul nostru. <br>
+Pentru a semnala acest lucru trebuie sa adaugam secventa de stop, adica codul "0000". <br>
 Astfel 11_7, 11_6, 11_5 si 11_4 o sa fie 0. <br>
 Bun, dar in aceasta imagine avem loc destinat datelor pana la 17 octeti si abia apoi observam secventa de stop de 4 biti. <br>
 Da, daca aveam un mesaj de 17 caractere am fi procedat asa, dar noi avem doar 10. Asa ca trebuie sa punem secventa de stop acum. <br>
