@@ -87,7 +87,7 @@ Plecam de la imaginea de mai jos. <br>
 ![image](https://github.com/user-attachments/assets/b2021dab-85c6-4a3c-90e4-f4b9a83f42a3) <br>
 In aceasta imagine am grupat spatiul disponibil in octeti, asa cum am discutat anterior. <br>
 Astfel (aproape) fiecare chenar are 8 biti, adica 8 patratele. <br>
-Completarea codului QR incepe din coltul din dreapta jos (DF_3) pe desen si continua in forma de zig-zag pe tot restul spatiului.
+Completarea codului QR incepe din coltul din dreapta jos (DF_3) pe desen si continua in forma de zig-zag pe tot restul spatiului. <br>
 Ordinea de parcurgere este urmatoarea: <br>
 DF_3 -> DF_2 -> DF_1 -> DF_0 -> NC_7 -> NC_6 -> ... NC_0 -> 1_7 -> 1_6 -> ...10_0 -> 11_7 -> ... -> E7_1 -> E7_0. <br>
 Bun, poate ca pare putin ambiguu pana acum. Ce inseamna, DF, NC, 1, 2, E1 etc? <br>
@@ -175,23 +175,4 @@ Seamana cu cel de la inceputul documentului? <br>
 Raspusul e DA! <br>
 Asadar, acestia sunt pasii pentru a creea un cod QR de la zero. <br>
 Destul de complicat, dar ideea e foarte interesanta!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
