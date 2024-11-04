@@ -194,7 +194,7 @@ Noi o sa alegem masca 3, adica masca nr 2 daca numaram de la 0. Astfel, in binar
 Aceasta presupune inversarea bitilor de 1 si 0 din 3 in 3 coloane, adica pe coloanele 1, 4, 7, 10, 13, 16 si 19. <br>
 Atentie, doar elementele care apartin datelor se schimba, nu si cele definitorii pentru codul QR. <br>
 Acum codul arata in felul urmator: <br>
-![image](https://github.com/user-attachments/assets/ebf1f78a-c65b-4394-b839-6252e0441806) <br>
+<img src="https://github.com/user-attachments/assets/7e6f475e-59e6-4198-9ea0-c2cb54597998" width="500"> <br>
 Galben reprezinta alb si albastru inchis reprezinta negru. <br>
 Acum putem sa completam si zona portocalie. <br>
 Aceasta e formata din 2 siruri identice de cate 15 biti. <br>
@@ -206,7 +206,7 @@ Aceasta valoare trebuie sa fie XOR cu sirul urmator: 101010000010010. <br>
 Astfel ca sirul final este: 111110110101010, asa cum se poate vedea si in tabel. <br>
 Aceasta secventa o sa fie trecuta in zona portocalie in ambele locuri in ordinea indicata. <br><br>
 Codul QR arata acum asa: <br>
-![image](https://github.com/user-attachments/assets/057cfb4e-098e-4102-9fe4-21c23b714728) <br>
+<img src="https://github.com/user-attachments/assets/38a7e730-9115-4f2f-8431-226622012153" width="500"> <br>
 Hai! Scaneaza-l! Merge? <br>
 Probabil ca merge daca te chinui putin, deoarece e colorat cu verde si nuante de gri si are si linii peste el. <br>
 Hai sa ii scoatem aceste detalii si sa il lasam doar alb si verde. <br>
