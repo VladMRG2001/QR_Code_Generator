@@ -17,8 +17,8 @@ Fiecare model superior adaugă câte 4 rânduri și coloane, până la versiunea
 ### QR Code Model 1
 In acest proiect voi genera coduri QR Model 1. <br>
 Mai jos se poate observa un astfel de cod QR. <br>
-Acesta are o dimensiune de 21x21 pixeli. Daca il scanam vom observa mesajul "My QR Code". <br>
-<img src="https://github.com/user-attachments/assets/c24eeb4d-1679-4151-9eaf-784150b1e8d0" width="300"> <br>
+Acesta are o dimensiune de 21x21 pixeli. Daca il scanam vom observa mesajul "My QR Code". <br><br>
+<img src="https://github.com/user-attachments/assets/22d8fd3c-d1e6-4da6-9600-1b5931b3629c" width="300"> <br>
 In continuare o sa aflam cum functioneaza. <br>
 
 ### Componentele Codului QR
