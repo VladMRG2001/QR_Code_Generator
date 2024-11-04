@@ -64,7 +64,8 @@ Acesti biti sunt necesari in caz ca vom printa codul QR pe hartie si aceasta poa
 Pentru codul QR Model 1 si nivel de corectare a erorilor L, avem 7 octeti pentru corectarea erorilor. <br>
 Acestia vor fi aflati prin intermediul unui algoritm special numit Reed-Solomon. <br>
 Astfel, vor ramane 19 octeti (din cei 26) pentru datele propriuzise. <br>
-Dintre acestia, 2 octeti (adica 16 biti) sunt rezervati pentru tipul de date stocate (4 biti), numarul de caractere pe care le are mesajul codat (8 biti) si secventa de stop a mesajului (4 biti). <br>
+Dintre acestia, 2 octeti (adica 16 biti) sunt rezervati pentru: <br>
+Tipul de date stocate (4 biti), numarul de caractere pe care le are mesajul codat (8 biti) si secventa de stop a mesajului (4 biti). <br>
 Asadar, in final, vom ramane doar cu 17 octeti. <br>
 Asta inseamna ca putem coda un mesaj de maximum 17 caractere in interiorul unui cod QR Model 1. <br>
 
@@ -127,7 +128,8 @@ Acum, mesajul nostru are 10 caractere. Deci o sa completam toate patratelele inc
 Dar cum? Literele nu au un cod, sunt... litere. <br>
 Ba da, au un cod. Toate caracterele au atribuit un numar de la 0 la 127. <br>
 Aceste valori sunt prezentate in tabelul ASCII. <br>
-![image](https://github.com/user-attachments/assets/2111638a-4119-44c6-a436-4f2bf7896881) <br>
+<img src="https://github.com/user-attachments/assets/fd48a265-16df-46e0-88de-daf170eeb712" width="700">  <br>
+
 Acolo, observam faptul ca textul nostru "My QR Code" poate fi scris ca "77 121 32 81 82 32 67 111 100 101". <br>
 Atentie la diferenta intre litere mari si mici si la faptul ca inclusiv spatiul are un cod, acela este 32. <br> 
 Bun, acum tot ce ramane de facut este sa convertim aceste valori in binar. Putem folosi un calculator. <br>
@@ -185,9 +187,10 @@ Mai jos vedem codificarea pentru nivelurile de corectare de eroare: <br>
 Dar ce este o masca si de unde luam acei biti? <br>
 Oricarui cod, dupa ce este completat, i se aplica o masca pentru a facilita citirea sa de catre scannere. <br>
 O masca nu este nimic altceva decat o interschimbare a bitilor cu 0 si 1 pe anumite zone in functie de un pattern. <br>
-Exista 8 tipuri de masti, dar noi o sa alegem masca cu codul "010". <br>
-Mai jos putem observa cele 8 tipuri de masti: <br>
-![image](https://github.com/user-attachments/assets/9ca866dc-1019-4d99-a393-e10460eb6f46) <br>
+Exista 8 tipuri de masti. <br>
+Mai jos le putem observa: <br>
+<img src="https://github.com/user-attachments/assets/b7c48adf-8e30-4918-acc1-0f0cd5ed86c7" width="700"> <br>
+Noi o sa alegem masca 3, adica masca nr 2 daca numaram de la 0. Astfel, in binar vom avea codul "010". <br>
 Aceasta presupune inversarea bitilor de 1 si 0 din 3 in 3 coloane, adica pe coloanele 1, 4, 7, 10, 13, 16 si 19. <br>
 Atentie, doar elementele care apartin datelor se schimba, nu si cele definitorii pentru codul QR. <br>
 Acum codul arata in felul urmator: <br>
