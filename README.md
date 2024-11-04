@@ -94,7 +94,7 @@ Pentru a converti din binar in zecimal se procedeaza invers. <br>
 Acum, pentru ca am explicat putin cum functioneaza un cod QR, hai sa construim unul de la zero. <br>
 Pentru inceput, vom exclude zonele deja discutate. Asfel, vom ramane cu cei 208 biti de date. <br>
 Plecam de la imaginea de mai jos. <br><br>
-![Matrix_0](https://github.com/user-attachments/assets/91152acc-602d-45e8-972a-3e5b9164e1c6) <br>
+<img src="https://github.com/user-attachments/assets/91152acc-602d-45e8-972a-3e5b9164e1c6" width="500"> <br>
 In aceasta imagine am grupat spatiul disponibil in octeti, asa cum am discutat anterior. <br>
 Astfel (aproape) fiecare chenar are 8 biti, adica 8 patratele. <br>
 
@@ -137,8 +137,7 @@ Astfel, vom completa in felul urmator: <br>
 4_7 = 0, 4_6 = 1, 4_5 = 0, 4_4 = 1, 4_3 = 0, 4_2 = 0, 4_1 = 0, 4_0 = 1. <br> 
 Se procedeaza la fel pentru toate caracterele din sir. <br><br>
 La final se va obtine: <br>
-!!!Atentie: 1_0 trebuia sa fie tot verde (negru), e o gresala! <br>
-![Matrix_1](https://github.com/user-attachments/assets/297602ba-3bee-4cd1-a470-7adcaa29ee66) <br>
+<img src="https://github.com/user-attachments/assets/297602ba-3bee-4cd1-a470-7adcaa29ee66" width="500"> <br>
 Ok, dar nu avem nici macar jumatate din cod completat. Nicio problema! <br>
 Acum am terminat de codat mesajul nostru. <br>
 Pentru a semnala acest lucru trebuie sa adaugam secventa de stop, adica codul "0000". <br>
@@ -150,8 +149,7 @@ Acestia sunt "11101100 00010001" si vor alterna in aceasta ordine de cate ori es
 Noi am ocupat doar 10 octeti de date, asa ca o sa avem nevoie de 7 octeti de padding. <br>
 Acestia sunt: 11101100 00010001 11101100 00010001 11101100 00010001 11101100 si se vor adauga in continuare. <br><br>
 Dupa completarea acestor biti de padding o sa obtinem: <br>
-![Matrix_2](https://github.com/user-attachments/assets/2062e000-9251-4b43-93cd-956cd7b90c5e) <br>
-
+<img src="https://github.com/user-attachments/assets/2062e000-9251-4b43-93cd-956cd7b90c5e" width="500"> <br>
 ### Adaugarea octetilor de corectare a erorilor
 Acum am terminat de introdus toate datele, dar observam ca inca mai avem de introdus 7 octeti numiti E1 - E7. <br>
 Acestia sunt cei 7 octeti de corectare a erorii necesari pentru un cod QR Model 1 cu corectare L. <br>
@@ -170,7 +168,7 @@ Cele 7 numere generate sunt: 183, 116, 230, 17, 230, 117, 247. <br>
 Adica in binar vom avea: 10110111 01110100 11100110 00010001 11100110 01110101 11110111 <br>
 Aceste valori trebuie adaugate in dreptul campurilor pentru octetii de eroare. <br><br>
 La final vom obtine: <br>
-![Matrix_3](https://github.com/user-attachments/assets/4cd67a11-8937-4ff1-a54a-d846895dcf6b) <br>
+<img src="https://github.com/user-attachments/assets/4cd67a11-8937-4ff1-a54a-d846895dcf6b" width="500"> <br>
 Acum codul QR este aproape complet. Mai avem de completat zonele cu portocaliu. <br>
 Dar pentru a face asta avem nevoie de 2 biti de eroare si 3 de masca. <br>
 Cei 2 de eroare sunt dati de nivelul de corectare ales, in cazul nostru L, care are codul standard "01". <br>
