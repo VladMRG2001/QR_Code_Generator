@@ -177,7 +177,9 @@ Aceste valori trebuie adaugate in dreptul campurilor pentru octetii de eroare. <
 La final vom obtine: <br>
 <img src="https://github.com/user-attachments/assets/4cd67a11-8937-4ff1-a54a-d846895dcf6b" width="500"> <br>
 Acum codul QR este aproape complet. Mai avem de completat zonele cu portocaliu. <br>
-Dar pentru a face asta avem nevoie de 2 biti de eroare si 3 de masca. <br>
+Dar pentru a face asta avem nevoie de 2 biti de eroare si 3 de masca. <br><br>
+### Mascarea codului
+Avem nevoie de cei 5 biti de date. <br>
 Cei 2 de eroare sunt dati de nivelul de corectare ales, in cazul nostru L, care are codul standard "01". <br>
 Mai jos vedem codificarea pentru nivelurile de corectare de eroare: <br>
 - Nivel L: 01
