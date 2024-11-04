@@ -4,7 +4,8 @@ Acest proiect Python generează un cod QR de la zero, folosind un mesaj introdus
 !!!Acest document este inca în dezvoltare!!! <br>
 
 ### Ce este un cod QR?
-Un cod QR (Quick Response code) este un tip de cod de bare bidimensional (sub forma matriceala), care poate stoca informații sub forma unei grile de pătrate negre și albe. <br>
+Un cod QR (Quick Response code) este un tip de cod de bare bidimensional (sub forma matriceala), <br>
+care poate stoca informații sub forma unei grile de pătrate negre și albe. <br>
 Acesta poate fi citit de dispozitive digitale precum smartphone-uri și scanerele QR. <br>
 
 ### Cum arata un cod QR?
@@ -189,7 +190,7 @@ Oricarui cod, dupa ce este completat, i se aplica o masca pentru a facilita citi
 O masca nu este nimic altceva decat o interschimbare a bitilor cu 0 si 1 pe anumite zone in functie de un pattern. <br>
 Exista 8 tipuri de masti. <br>
 Mai jos le putem observa: <br>
-<img src="https://github.com/user-attachments/assets/b7c48adf-8e30-4918-acc1-0f0cd5ed86c7" width="700"> <br>
+<img src="https://github.com/user-attachments/assets/b7c48adf-8e30-4918-acc1-0f0cd5ed86c7" width="500"> <br>
 Noi o sa alegem masca 3, adica masca nr 2 daca numaram de la 0. Astfel, in binar vom avea codul "010". <br>
 Aceasta presupune inversarea bitilor de 1 si 0 din 3 in 3 coloane, adica pe coloanele 1, 4, 7, 10, 13, 16 si 19. <br>
 Atentie, doar elementele care apartin datelor se schimba, nu si cele definitorii pentru codul QR. <br>
@@ -199,11 +200,13 @@ Galben reprezinta alb si albastru inchis reprezinta negru. <br>
 Acum putem sa completam si zona portocalie. <br>
 Aceasta e formata din 2 siruri identice de cate 15 biti. <br>
 Primii 5 biti sunt "01010", adica cei 2 de eroare + cei 3 de masca. <br>
-Ceilalti 10 biti sunt generati in functie de acestia dupa un tabel. <br>
-![image](https://github.com/user-attachments/assets/351276ac-d252-404a-90fe-37d68ae5ade4) <br>
-Astfel, in cazul nostru, cei 10 biti sunt: 0110111000. Astfel sirul complet este: 010100110111000. <br> 
+Ceilalti 10 biti sunt generati in functie de acesti 5 astfel: <br>
+<img src="https://github.com/user-attachments/assets/4002b5ab-f31b-45f4-98b3-0cad1a66e8ac" width="500"> <br>
+
+Astfel, in cazul nostru, cei 10 biti sunt: 0110111000. <br>
+Deci, sirul complet este: 010100110111000. <br> 
 Aceasta valoare trebuie sa fie XOR cu sirul urmator: 101010000010010. <br>
-Astfel ca sirul final este: 111110110101010, asa cum se poate vedea si in tabel. <br>
+In final sirul care o sa fie trecut in codul QR este: 111110110101010, asa cum se poate vedea si in tabel. <br>
 Aceasta secventa o sa fie trecuta in zona portocalie in ambele locuri in ordinea indicata. <br><br>
 Codul QR arata acum asa: <br>
 <img src="https://github.com/user-attachments/assets/38a7e730-9115-4f2f-8431-226622012153" width="500"> <br>
@@ -218,5 +221,10 @@ Raspusul e DA! Pentru ca sunt la fel! <br>
 Asadar, acestia sunt pasii pentru a creea un cod QR de la zero. <br>
 Pentru celelalte versiuni de cod QR ideea este aceeasi, doar ca e mai mult de munca. <br><br>
 Concluzie: <br>
-Destul de complicat, dar ideea e foarte interesanta!
+Destul de complicat, dar ideea e foarte interesanta! <br><br>
+Bibliografie si referinte: <br>
+https://www.thonky.com/qr-code-tutorial/ <br>
+https://blog.qartis.com/decoding-small-qr-codes-by-hand/ <br>
+https://dev.to/maxart2501/series/13444 <br>
+https://www.youtube.com/watch?v=w5ebcowAJD8 <br>
 
