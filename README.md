@@ -52,10 +52,10 @@ Ei bine... nu. Este putin mai complicat. <br>
 Arhitectura codurilor QR impune alocarea unor biti de corectare a erorilor. <br> 
 Acest lucru este prevazut pentru a putea corecta eventualele greseli, deteriorari sau parti care lipsesc din cod. <br>
 Asadar, pentru orice tip de cod exista 4 niveluri de corectare de eroare in functie de ce procent de date pot fi recuperate. <br> 
-- L(Low) - 7%,
-- M(Medium) - 15%,
-- Q(Quartile) - 25%,
-- H(High) - 30%. <br>
+- L (Low) - 7%,
+- M (Medium) - 15%,
+- Q (Quartile) - 25%,
+- H (High) - 30%. <br>
 <br>
 Cu cat nivelul e mai mare, cu atat e nevoie de alocarea mai multor biti pentru corectare. <br>
 In exemplul meu am ales un nivel Low (L), pentru a permite cat mai multe date reale sa fie stocate.<br> 
@@ -108,8 +108,12 @@ Mai jos urmeaza explicatiile: <br>
 - DF (Data format): acesta este un sir de 4 biti care indica codului QR ce tip de date vrem sa codam. <br>
 Exista mai multe tipuri: binar, numeric, alfanumeric si kanji. Fiecare tip are o secventa speciala de biti. <br>
 Mai jos putem vedea cei 4 biti in functie de tipul de date: <br>
-![image](https://github.com/user-attachments/assets/8a91e0f8-e79a-474a-997c-effa9a4448a8) <br>
-Noi o sa lucram cu date in format binar, asa ca cei 4 biti sunt standardizati: "0100", adica DF_3 = 0, DF_2 = 1, DF_1 = 0, DF_0 = 0. <br>
+&emsp;- Numeric : 0001 <br>
+&emsp;- Alfanumeric: 0010 <br>
+&emsp;- Binar: 0100 <br>
+&emsp;- Kanji: 1000 <br>
+
+&emsp;&emsp;Noi o sa lucram cu date in format binar, asa ca cei 4 biti sunt standardizati: "0100", adica DF_3 = 0, DF_2 = 1, DF_1 = 0, DF_0 = 0. <br>
 - NC (Number of Characters): este o secventa de 8 biti care codifica numarul de caractere pe care urmeaza un mesaj sa il aiba. <br>
 - 1 - 17: Caracterele codate pe 8 biti. <br>
 - E1 - E7: Octetii pentru corectarea erorii. <br><br>
@@ -172,8 +176,12 @@ La final vom obtine: <br>
 Acum codul QR este aproape complet. Mai avem de completat zonele cu portocaliu. <br>
 Dar pentru a face asta avem nevoie de 2 biti de eroare si 3 de masca. <br>
 Cei 2 de eroare sunt dati de nivelul de corectare ales, in cazul nostru L, care are codul standard "01". <br>
-Mai jos vedem tabelul pentru toate nivelurile de corectare de eroare: <br>
-![image](https://github.com/user-attachments/assets/a7e24a3d-061f-4d9b-aa1f-376a6412d606) <br>
+Mai jos vedem codificarea pentru nivelurile de corectare de eroare: <br>
+- Nivel L: 01
+- Nivel M: 00
+- Nivel Q: 11
+- Nivel H: 10
+
 Dar ce este o masca si de unde luam acei biti? <br>
 Oricarui cod, dupa ce este completat, i se aplica o masca pentru a facilita citirea sa de catre scannere. <br>
 O masca nu este nimic altceva decat o interschimbare a bitilor cu 0 si 1 pe anumite zone in functie de un pattern. <br>
