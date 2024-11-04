@@ -18,7 +18,7 @@ Fiecare model superior adaugă câte 4 rânduri și coloane, până la versiunea
 In acest proiect voi genera coduri QR Model 1. <br>
 Mai jos se poate observa un astfel de cod QR. <br>
 Acesta are o dimensiune de 21x21 pixeli. Daca il scanam vom observa mesajul "My QR Code". <br>
-<img src="https://github.com/user-attachments/assets/c24eeb4d-1679-4151-9eaf-784150b1e8d0" width="200"> <br>
+<img src="https://github.com/user-attachments/assets/c24eeb4d-1679-4151-9eaf-784150b1e8d0" width="300"> <br>
 In continuare o sa aflam cum functioneaza. <br>
 
 ### Componentele Codului QR
@@ -34,11 +34,11 @@ Orice cod QR are anumite componente definitorii: <br>
 ### Elementele definitorii 
 In imaginea de mai jos am separat zonele definitorii ale oricarui cod QR. <br>
 Zonele inconjurate cu linie rosie sunt identice pentru orice QR. <br>
-![Codqr1](https://github.com/user-attachments/assets/212ec9ac-f552-4c37-9935-492455ae1bc4) <br><br>
+<img src="https://github.com/user-attachments/assets/fff4d635-3ca1-4765-a5f5-6a8831d2ebe9" width="300"> <br><br>
 In imaginea urmatoare putem observa o alta sectiune rezervata. <br>
 Zona delimitata cu albastru contine alte patratele care nu contin datele proriuzise, o sa vorbim despre ele mai tarziu. <br>
 Acel patrat desenat cu verde in interiorul zonei albastre este intotdeauna negru. <br>
-![Codqr2](https://github.com/user-attachments/assets/a273b450-467e-4f83-929e-38be06cefcac) <br><br>
+<img src="https://github.com/user-attachments/assets/c2db5ee8-798f-48c7-933b-1f25e4a18207" width="300"> <br><br>
 Restul codului QR este destinat datelor efective. <br>
 Aceste date sunt reprezentate in format binar (adica in 0 si 1). <br>
 Culoarea alb reprezinta 0, iar culoarea negru reprezinta 1. <br>
