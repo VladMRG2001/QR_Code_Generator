@@ -241,6 +241,6 @@ for y in range(height):
 
 # Afisarea si salvarea imaginii finale
 img.show()
-img.save("new_matrix_image_with_quiet_zone.png")
+img.save("QR_Code.png")
 
 # auto-py-to-exe pentru a converti in .exe (generarea executabilului)
