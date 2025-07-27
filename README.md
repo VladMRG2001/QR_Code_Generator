@@ -20,6 +20,7 @@ In acest proiect voi genera coduri QR Model 1. <br>
 Mai jos se poate observa un astfel de cod QR. <br>
 Acesta are o dimensiune de 21x21 pixeli. Daca il scanam vom observa mesajul "My QR Code". <br><br>
 <img src="https://github.com/user-attachments/assets/22d8fd3c-d1e6-4da6-9600-1b5931b3629c" width="300"> <br>
+Fig 1. Codul QR initial <br><br>
 In continuare o sa aflam cum functioneaza. <br>
 
 ### Componentele Codului QR
@@ -35,11 +36,13 @@ Orice cod QR are anumite componente definitorii: <br>
 ### Elementele definitorii 
 In imaginea de mai jos am separat zonele definitorii ale oricarui cod QR. <br>
 Zonele inconjurate cu linie rosie sunt identice pentru orice QR. <br>
-<img src="https://github.com/user-attachments/assets/fff4d635-3ca1-4765-a5f5-6a8831d2ebe9" width="300"> <br><br>
+<img src="https://github.com/user-attachments/assets/fff4d635-3ca1-4765-a5f5-6a8831d2ebe9" width="300"><br>
+Fig 2. Patratele de aliniere si sinctronizare (rosu)<br><br>
 In imaginea urmatoare putem observa o alta sectiune rezervata. <br>
 Zona delimitata cu albastru contine alte patratele care nu contin datele proriuzise, o sa vorbim despre ele mai tarziu. <br>
 Acel patrat desenat cu verde in interiorul zonei albastre este intotdeauna negru. <br>
-<img src="https://github.com/user-attachments/assets/c2db5ee8-798f-48c7-933b-1f25e4a18207" width="300"> <br><br>
+<img src="https://github.com/user-attachments/assets/c2db5ee8-798f-48c7-933b-1f25e4a18207" width="300"><br>
+Fig 3. Secventa de mascare si corectare (albastru)<br><br>
 Restul codului QR este destinat datelor efective. <br>
 Aceste date sunt reprezentate in format binar (adica in 0 si 1). <br>
 Culoarea alb reprezinta 0, iar culoarea negru reprezinta 1. <br>
@@ -115,6 +118,7 @@ Acum, pentru ca am explicat putin cum functioneaza un cod QR, hai sa construim u
 Pentru inceput, vom exclude zonele deja discutate. Asfel, vom ramane cu cei 208 biti de date. <br>
 Plecam de la imaginea de mai jos. <br><br>
 <img src="https://github.com/user-attachments/assets/91152acc-602d-45e8-972a-3e5b9164e1c6" width="500"> <br>
+Fig 4. Harta zonei de stocare in codul QR <br><br>
 In aceasta imagine am grupat spatiul disponibil in octeti, asa cum am discutat anterior. <br>
 Astfel (aproape) fiecare chenar are 8 biti, adica 8 patratele. <br>
 
@@ -143,11 +147,13 @@ Daca o sa convertim 10 in binar vom obtine 00001010. Adica octetul NC va avea va
 Mai detaliat NC_7 = 0, NC_6 = 0, NC_5 = 0, NC_4 = 0, NC_3 = 1, NC_2 = 0, NC_1 = 1, NC_0 = 0. <br>
 Asta inseamana ca pana acum am completat primii 4 + 8 biti in felul urmator: <br>
 ![image](https://github.com/user-attachments/assets/8fc32fe5-0339-41da-b057-7bc1b08ea3cc) <br>
+Fig 5. Completarea DF (Data format) si NC (Number of Characters)<br><br>
 Acum, mesajul nostru are 10 caractere. Deci o sa completam toate patratelele incepand cu 1_7 -> 1_6 -> ... -> 10_1 -> 10_0. <br>
 Dar cum? Literele nu au un cod, sunt... litere. <br>
 Ba da, au un cod. Toate caracterele au atribuit un numar de la 0 la 127. <br>
 Aceste valori sunt prezentate in tabelul ASCII. <br>
 <img src="https://github.com/user-attachments/assets/fd48a265-16df-46e0-88de-daf170eeb712" width="700">  <br>
+Fig 6. Tabelul ASCII de codificare a caracterelor<br>
 
 Acolo, observam faptul ca textul nostru "My QR Code" poate fi scris ca "77 121 32 81 82 32 67 111 100 101". <br>
 Atentie la diferenta intre litere mari si mici si la faptul ca inclusiv spatiul are un cod, acela este 32. <br> 
@@ -163,6 +169,7 @@ Astfel, vom completa in felul urmator: <br>
 Se procedeaza la fel pentru toate caracterele din sir. <br><br>
 La final se va obtine: <br>
 <img src="https://github.com/user-attachments/assets/297602ba-3bee-4cd1-a470-7adcaa29ee66" width="500"> <br>
+Fig 7. Codul QR completat cu datele noastre<br><br>
 Ok, dar nu avem nici macar jumatate din cod completat. Nicio problema! <br>
 Acum am terminat de codat mesajul nostru. <br>
 Pentru a semnala acest lucru trebuie sa adaugam secventa de stop, adica codul "0000". <br>
@@ -175,6 +182,7 @@ Noi am ocupat doar 10 octeti de date, asa ca o sa avem nevoie de 7 octeti de pad
 Acestia sunt: 11101100 00010001 11101100 00010001 11101100 00010001 11101100 si se vor adauga in continuare. <br><br>
 Dupa completarea acestor biti de padding o sa obtinem: <br>
 <img src="https://github.com/user-attachments/assets/2062e000-9251-4b43-93cd-956cd7b90c5e" width="500"> <br>
+Fig 8. Codul QR dupa adaugarea secventei de padding <br><br>
 ### Adaugarea octetilor de corectare a erorilor
 Acum am terminat de introdus toate datele, dar observam ca inca mai avem de introdus 7 octeti numiti E1 - E7. <br>
 Acestia sunt cei 7 octeti de corectare a erorii necesari pentru un cod QR Model 1 cu corectare L. <br>
@@ -194,6 +202,7 @@ Adica in binar vom avea: 10110111 01110100 11100110 00010001 11100110 01110101 1
 Aceste valori trebuie adaugate in dreptul campurilor pentru octetii de eroare. <br><br>
 La final vom obtine: <br>
 <img src="https://github.com/user-attachments/assets/4cd67a11-8937-4ff1-a54a-d846895dcf6b" width="500"> <br>
+Fig 9. Codul QR dupa completarea octetilor de corectare a erorilor<br><br>
 Acum codul QR este aproape complet. Mai avem de completat zonele cu portocaliu. <br>
 Dar pentru a face asta avem nevoie de 2 biti de eroare si 3 de masca. <br><br>
 ### Mascarea codului
@@ -211,17 +220,20 @@ O masca nu este nimic altceva decat o interschimbare a bitilor cu 0 si 1 pe anum
 Exista 8 tipuri de masti. <br>
 Mai jos le putem observa: <br>
 <img src="https://github.com/user-attachments/assets/b7c48adf-8e30-4918-acc1-0f0cd5ed86c7" width="500"> <br>
+Fig 10. Tipurile de mascare pentru un cod QR<br><br>
 Noi o sa alegem masca 3, adica masca nr 2 daca numaram de la 0. Astfel, in binar vom avea codul "010". <br>
 Aceasta presupune inversarea bitilor de 1 si 0 din 3 in 3 coloane, adica pe coloanele 1, 4, 7, 10, 13, 16 si 19. <br>
 Atentie, doar elementele care apartin datelor se schimba, nu si cele definitorii pentru codul QR. <br>
 Acum codul arata in felul urmator: <br>
 <img src="https://github.com/user-attachments/assets/7e6f475e-59e6-4198-9ea0-c2cb54597998" width="500"> <br>
+Fig 11. Transformarea bitilor pe baza mastii alese<br><br>
 Galben reprezinta alb si albastru inchis reprezinta negru. <br>
 Acum putem sa completam si zona portocalie. <br>
 Aceasta e formata din 2 siruri identice de cate 15 biti. <br>
 Primii 5 biti sunt "01010", adica cei 2 de eroare + cei 3 de masca. <br>
 Ceilalti 10 biti sunt generati in functie de acesti 5 astfel: <br>
 <img src="https://github.com/user-attachments/assets/4002b5ab-f31b-45f4-98b3-0cad1a66e8ac" width="500"> <br>
+Fig 12. Tabelul de generare a secventei de mascare si corectare<br><br>
 
 Astfel, in cazul nostru, cei 10 biti sunt: 0110111000. <br>
 Deci, sirul complet este: 010100110111000. <br> 
@@ -230,13 +242,16 @@ In final sirul care o sa fie trecut in codul QR este: 111110110101010, asa cum s
 Aceasta secventa o sa fie trecuta in zona portocalie in ambele locuri in ordinea indicata. <br><br>
 Codul QR arata acum asa: <br>
 <img src="https://github.com/user-attachments/assets/38a7e730-9115-4f2f-8431-226622012153" width="500"> <br>
+Fig 13. Codul QR dupa aplicarea tuturor pasilor<br><br>
 Hai! Scaneaza-l! Merge? <br>
 Probabil ca merge daca te chinui putin, deoarece e colorat cu verde si nuante de gri si are si linii peste el. <br>
 Hai sa ii scoatem aceste detalii si sa il lasam doar alb si verde. <br><br>
 <img src="https://github.com/user-attachments/assets/6027346d-553c-41a7-8f3e-777960a314b4" width="300"> <br>
+Fig 14. Codul QR final (merge chiar si cu verde)<br>
 <br><br>
 Aici este codul QR initial pentru comparatie. <br>
 <img src="https://github.com/user-attachments/assets/22d8fd3c-d1e6-4da6-9600-1b5931b3629c" width="300"> <br>
+Fig 15. Codul QR rezultat (in forma standard - alb si negru)<br><br>
 Seamana cele doua coduri? <br>
 Raspusul e DA! Pentru ca sunt la fel! <br>
 Asadar, acestia sunt pasii pentru a creea un cod QR de la zero. <br>
