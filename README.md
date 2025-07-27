@@ -1,12 +1,11 @@
 # QR Code Generator
 
-Acest proiect Python generează un cod QR de la zero, folosind un mesaj introdus de utilizator. <br><br>
-!!!Acest document este inca în dezvoltare!!! <br>
+Acest proiect Python construiește **un cod QR de la zero**, pas cu pas, pe baza unui mesaj introdus de utilizator. <br><br>
+⚠️ Acest document este inca în dezvoltare!!! <br>
 
 ### Ce este un cod QR?
-Un cod QR (Quick Response code) este un tip de cod de bare bidimensional (sub forma matriceala), <br>
-care poate stoca informații sub forma unei grile de pătrate negre și albe. <br>
-Acesta poate fi citit de dispozitive digitale precum smartphone-uri și scanerele QR. <br>
+Un cod QR (Quick Response code) este un tip de cod de bare bidimensional (format dintr-o matrice de pătrate alb-negre). <br>
+Acesta poate stoca informații precum texte, link-uri, numere de telefon etc., și este ușor scanabil cu un smartphone sau un scaner QR. <br>
 
 ### Cum arata un cod QR?
 Un cod QR este o matrice de pătrate alb-negre și vine în mai multe versiuni, fiecare cu capacități diferite de stocare. <br>
@@ -16,11 +15,11 @@ A doua versiune (Model 2) are 25x25 patrate. <br>
 Fiecare model superior adaugă câte 4 rânduri și coloane, până la versiunea 40, care ajunge la 177x177 pătrate. <br>
 
 ### QR Code Model 1
-In acest proiect voi genera coduri QR Model 1. <br>
+In acest proiect vom genera coduri QR Model 1. <br>
 Mai jos se poate observa un astfel de cod QR. <br>
 Acesta are o dimensiune de 21x21 pixeli. Daca il scanam vom observa mesajul "My QR Code". <br><br>
 <img src="https://github.com/user-attachments/assets/22d8fd3c-d1e6-4da6-9600-1b5931b3629c" width="300"> <br>
-Fig 1. Codul QR initial <br><br>
+Fig 1. Codul QR cu mesajul "My QR Code"<br><br>
 In continuare o sa aflam cum functioneaza. <br>
 
 ### Componentele Codului QR
@@ -29,9 +28,9 @@ Orice cod QR are anumite componente definitorii: <br>
 &emsp;**- Pătrate de aliniere:** În colțurile codului QR există trei pătrate mari, numite pătrate de aliniere, care ajută la orientarea și citirea codului. <br>
 &emsp; Acestea sunt situate în colțurile din stânga sus, dreapta sus și stânga jos. <br>
 &emsp; De la versiunea 2 in sus exista un patrat mai mic si in partea dreapta jos.<br>
-&emsp;**- Pătrățele de sincronizare:** Cele 3 patrate mari sunt unite prin intermediul unor linii de patratele care alterneaza intre alb si negru. <br>
+&emsp;**- Linii de sincronizare:** Cele 3 patrate mari sunt unite prin intermediul unor linii de patratele alternante alb-negru. <br>
 &emsp;**- Quiet zone:** În jurul codului QR există o margine albă, numită „quiet zone”, care ajută la separarea codului QR de alte elemente vizuale. <br>
-&emsp;**- Informație:** Informația stocată în codul QR poate include URL-uri, texte, numere de telefon, adrese de e-mail sau alte tipuri de date. <br><br>
+&emsp;**- Zona de date:** Informația stocată în codul QR poate include URL-uri, texte, numere de telefon, adrese de e-mail sau alte tipuri de date. <br><br>
 
 ### Elementele definitorii 
 In imaginea de mai jos am separat zonele definitorii ale oricarui cod QR. <br>
