@@ -3,6 +3,8 @@
 Acest proiect Python construiește **un cod QR de la zero**, pas cu pas, pe baza unui mesaj introdus de utilizator. <br><br>
 ⚠️ Acest document este inca în dezvoltare!!! <br>
 
+## Noțiuni teoretice de bază
+
 ### Ce este un cod QR?
 Un cod QR (Quick Response code) este un tip de cod de bare bidimensional (format dintr-o matrice de pătrate alb-negre). <br>
 Acesta poate stoca informații precum texte, link-uri, numere de telefon etc., și este ușor scanabil cu un smartphone sau un scaner QR. <br>
@@ -112,7 +114,7 @@ Adica, 150 = 1 0 0 1 0 1 1 0 in binar. <br>
 Pentru a converti din binar in zecimal se procedeaza invers. <br>
 10011100 = 2^7 + 2^4 + 2^3 + 2^2 = se calculeaza. <br>
 
-## Exemplu practic - pas cu pas
+## Exemplu de creare a unui cod QR (pas cu pas)
 Acum, pentru ca am explicat putin cum functioneaza un cod QR, hai sa construim unul de la zero. <br>
 Pentru inceput, vom exclude zonele deja discutate. Asfel, vom ramane cu cei 208 biti de date. <br>
 Plecam de la imaginea de mai jos. <br><br>
@@ -257,7 +259,12 @@ Asadar, acestia sunt pasii pentru a creea un cod QR de la zero. <br>
 Pentru celelalte versiuni de cod QR ideea este aceeasi, doar ca e mai mult de munca. <br><br>
 Concluzie: <br>
 Destul de complicat, dar ideea e foarte interesanta! <br><br>
-Bibliografie si referinte: <br>
+
+## Exemplu pentru decodificarea unui cod QR (pas cu pas)
+In aceasta sectiune vom aborda in sens invers strategia. <br>
+O sa folosim un cod QR de ordin 2 (25x25) si vom decodifica pas cu pas informatia din acesta. <br><br>
+
+### Bibliografie si referinte: <br>
 [1] https://www.youtube.com/watch?v=w5ebcowAJD8 (Video explicativ despre QR - de aici a pornit acest proiect)<br>
 [2] https://www.pclviewer.com/rs2/qrtopology.htm (Sumar despre structura unui cod QR) <br>
 [3] https://dev.to/maxart2501/series/13444 (Explicatii pentru implementarea software)<br>
