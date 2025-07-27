@@ -59,12 +59,13 @@ Asadar, pentru orice tip de cod exista 4 niveluri de corectare de eroare in func
 - H (High) - 30%. <br>
 <br>
 Mai jos avem schema de alocare a octetilor pentru codul QR din cazul nostru. <br>
- |  CE  | C | OC | OI | OD | T  |
- | ---  |---|----|----|----|----|
- | "01" | L |  7 |  2 | 17 | 26 | 
- | "00" | M | 10 |	2	| 14 | 26 |
- | "11" | Q | 13 |	2	| 11 | 26 |
- | "10" | H | 17 |	2	|  7 | 26 |
+|  CE  | C | OC | OI | OD | T  |
+|------|---|----|----|----|----|
+| "01" | L |  7 |  2 | 17 | 26 | 
+| "00" | M | 10 |  2 | 14 | 26 |
+| "11" | Q | 13 |  2 | 11 | 26 |
+| "10" | H | 17 |  2 |  7 | 26 |
+
 <br>
 unde:
 CE = codul tipului de corectare in format binar
