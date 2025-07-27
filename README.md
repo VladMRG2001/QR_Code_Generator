@@ -59,21 +59,22 @@ Asadar, pentru orice tip de cod exista 4 niveluri de corectare de eroare in func
 - H (High) - 30%. <br>
 <br>
 Mai jos avem schema de alocare a octetilor pentru codul QR din cazul nostru. <br>
+
 |  CE  | C | OC | OI | OD | T  |
 |------|---|----|----|----|----|
-| "01" | L |  7 |  2 | 17 | 26 | 
+| "01" | L |  7 |  2 | 17 | 26 |
 | "00" | M | 10 |  2 | 14 | 26 |
 | "11" | Q | 13 |  2 | 11 | 26 |
 | "10" | H | 17 |  2 |  7 | 26 |
 
 <br>
-unde:
-CE = codul tipului de corectare in format binar
-C = tipul de corectare a erorilor ales
-OC = numarul de octeti rezervati pentru corectarea erorilor
-OI = numarul de octeti rezervati pentru identificarea datelor (mereu 2)
-OD = numarul total de octeti alocati pentru datele propriuzise stocate in codul qr
-T = numarul total de octeti disponibili (26 in acest caz)
+unde: <br>
+CE = codul tipului de corectare in format binar <br>
+C = tipul de corectare a erorilor ales <br>
+OC = numarul de octeti rezervati pentru corectarea erorilor <br>
+OI = numarul de octeti rezervati pentru identificarea datelor (mereu 2) <br>
+OD = numarul total de octeti alocati pentru datele propriuzise stocate in codul QR <br>
+T = numarul total de octeti disponibili (26 in acest caz) <br>
 <br>
 Cu cat nivelul e mai mare, cu atat e nevoie de alocarea mai multor biti pentru corectare. <br>
 In exemplul meu am ales un nivel Low (L), pentru a permite cat mai multe date reale sa fie stocate.<br> 
