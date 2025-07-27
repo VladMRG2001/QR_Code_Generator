@@ -251,7 +251,7 @@ Fig 14. Codul QR final (merge chiar si cu verde)<br>
 <br><br>
 Aici este codul QR initial pentru comparatie. <br>
 <img src="https://github.com/user-attachments/assets/22d8fd3c-d1e6-4da6-9600-1b5931b3629c" width="300"> <br>
-Fig 15. Codul QR rezultat (in forma standard - alb si negru)<br><br>
+Fig 15. Codul QR initial (si final, pentru ca sunt la fel :) )<br><br>
 Seamana cele doua coduri? <br>
 Raspusul e DA! Pentru ca sunt la fel! <br>
 Asadar, acestia sunt pasii pentru a creea un cod QR de la zero. <br>
