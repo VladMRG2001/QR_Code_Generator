@@ -43,7 +43,7 @@ Acel patrat desenat cu verde in interiorul zonei albastre este intotdeauna negru
 Restul codului QR este destinat datelor efective. <br>
 Aceste date sunt reprezentate in format binar (adica in 0 si 1). <br>
 Culoarea alb reprezinta 0, iar culoarea negru reprezinta 1. <br>
-Daca am sta sa numaram toate celelate patratele ramase am obtine un total de 208. Asta inseamna 208 biti cu valori de 0 sau 1. <br>
+Daca am sta sa numaram toate celelate patrate ramase am obtine un total de 208. Asta inseamna 208 biti cu valori de 0 sau 1. <br>
 Insa datele (caracterele care sunt codate) sunt stocate sub forma de octeti, adica fiecare caracter are un octet, adica 8 biti. <br>
 De aici rezulta ca tot acest spatiu ramas are 208/8 = 26 de octeti de date. <br>
 Asta inseamna ca putem stoca 26 de caractere? <br>
@@ -57,6 +57,22 @@ Asadar, pentru orice tip de cod exista 4 niveluri de corectare de eroare in func
 - M (Medium) - 15%,
 - Q (Quartile) - 25%,
 - H (High) - 30%. <br>
+<br>
+Mai jos avem schema de alocare a octetilor pentru codul QR din cazul nostru. <br>
+ |  CE  | C | OC | OI | OD | T  |
+ | ---  |---|----|----|----|----|
+ | "01" | L |  7 |  2 | 17 | 26 | 
+ | "00" | M | 10 |	2	| 14 | 26 |
+ | "11" | Q | 13 |	2	| 11 | 26 |
+ | "10" | H | 17 |	2	|  7 | 26 |
+<br>
+unde:
+CE = codul tipului de corectare in format binar
+C = tipul de corectare a erorilor ales
+OC = numarul de octeti rezervati pentru corectarea erorilor
+OI = numarul de octeti rezervati pentru identificarea datelor (mereu 2)
+OD = numarul total de octeti alocati pentru datele propriuzise stocate in codul qr
+T = numarul total de octeti disponibili (26 in acest caz)
 <br>
 Cu cat nivelul e mai mare, cu atat e nevoie de alocarea mai multor biti pentru corectare. <br>
 In exemplul meu am ales un nivel Low (L), pentru a permite cat mai multe date reale sa fie stocate.<br> 
