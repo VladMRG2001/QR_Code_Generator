@@ -171,7 +171,7 @@ La final se va obtine: <br>
 Fig 7. Codul QR completat cu datele noastre<br><br>
 Ok, dar nu avem nici macar jumatate din cod completat. Nicio problema! <br>
 Acum am terminat de codat mesajul nostru. <br>
-Pentru a semnala acest lucru trebuie sa adaugam secventa de stop, adica codul "0000". <br>
+Pentru a semnala acest lucru trebuie sa adaugam **secventa de stop**, adica codul **0000**. <br>
 Astfel 11_7, 11_6, 11_5 si 11_4 o sa fie 0. <br>
 Bun, dar in aceasta imagine avem loc destinat datelor pana la 17 octeti si abia apoi observam secventa de stop de 4 biti. <br>
 Da, daca aveam un mesaj de 17 caractere am fi procedat asa, dar noi avem doar 10. Asa ca trebuie sa punem secventa de stop acum. <br>
@@ -258,8 +258,10 @@ Pentru celelalte versiuni de cod QR ideea este aceeasi, doar ca e mai mult de mu
 Concluzie: <br>
 Destul de complicat, dar ideea e foarte interesanta! <br><br>
 Bibliografie si referinte: <br>
-https://www.thonky.com/qr-code-tutorial/ <br>
-https://blog.qartis.com/decoding-small-qr-codes-by-hand/ <br>
-https://dev.to/maxart2501/series/13444 <br>
-https://www.youtube.com/watch?v=w5ebcowAJD8 <br>
-
+[1] https://www.youtube.com/watch?v=w5ebcowAJD8 (Video explicativ despre QR - de aici a pornit acest proiect)<br>
+[2] https://www.pclviewer.com/rs2/qrtopology.htm (Sumar despre structura unui cod QR) <br>
+[3] https://dev.to/maxart2501/series/13444 (Explicatii pentru implementarea software)<br>
+[4] https://blog.qartis.com/decoding-small-qr-codes-by-hand/ (Exemplu de decodificare manuala)<br>
+[5] https://xor.pw/# (Calculator pentru XOR) <br>
+[6] https://www.prepostseo.com/tool/decimal-to-ascii (Util pentru transformarea datelor - a se incerca toate functiile) <br>
+[7] https://www.pclviewer.com/rs2/galois.html (Articol despre metoda de detectare si corectare a erorilor folosind algoritmul Reed-Solomon si campurile Galois)<br>
