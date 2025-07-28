@@ -189,10 +189,11 @@ Fig 8. Codul QR dupa adaugarea secventei de padding <br><br>
 Acum am terminat de introdus toate datele, dar observam ca inca mai avem de introdus 7 octeti numiti E1 - E7. <br>
 Acestia sunt cei 7 octeti de corectare a erorii necesari pentru un cod QR Model 1 cu corectare L. <br>
 Modul de aflare a acestora e destul de complicat. <br>
-Recomand folosirea unui calculator online sau a unui script in python. <br>
-Pentru a ii afla trebuie sa concatenam toti bitii introdusi pana acum. Adica vom avea: <br>
+Recomand folosirea unui calculator online sau a unui script in python.<br>
+Pentru a ii afla trebuie sa **concatenam toti bitii** introdusi pana acum. Adica vom avea: <br>
 4 (DF) + 8 (NC) + 10 * 8 (Mesajul) + 4 (Stop) + 7 * 8 (Padding) = 152 biti. <br> 
 Acestia vor fi afisati in ordinea in care sunt scrisi in cod, vor fi delimitati in grupuri de 8 biti si apoi convertiti in 19 valori zecimale. <br>
+Atentie, nu mai conteaza ce tip de biti sunt, daca reprezinta DF, NC, mesajul sau Padding. Aceasta secventa de 152 de biti este scrisa exact asa cum se afla in codul QR si apoi impartita in 152/8 = 19 octeti.<br>
 In cazul nostru avem: <br>
 01000000 10100100 11010111 10010010 00000101 00010101 00100010 00000100 00110110 11110110 01000110 01010000 11101100 00010001 11101100 00010001 11101100 00010001 11101100 <br>
 Daca le convertim in zecimal avem valorile: <br>
@@ -209,12 +210,7 @@ Acum codul QR este aproape complet. Mai avem de completat zonele cu portocaliu. 
 Dar pentru a face asta avem nevoie de 2 biti de eroare si 3 de masca. <br><br>
 ### Mascarea codului
 Avem nevoie de cei 5 biti de date. <br>
-Cei 2 de eroare sunt dati de nivelul de corectare ales, in cazul nostru L, care are codul standard "01". <br>
-Mai jos vedem codificarea pentru nivelurile de corectare de eroare: <br>
-- Nivel L: 01
-- Nivel M: 00
-- Nivel Q: 11
-- Nivel H: 10
+Cei 2 de eroare sunt dati de nivelul de corectare ales, in cazul nostru L, care are codul standard "01", asa cum am aratat in tabel. <br>
 
 Dar ce este o masca si de unde luam acei biti? <br>
 Oricarui cod, dupa ce este completat, i se aplica o masca pentru a facilita citirea sa de catre scannere. <br>
