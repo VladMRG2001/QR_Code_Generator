@@ -251,11 +251,7 @@ Hai sa ii scoatem aceste detalii si sa il lasam doar alb si verde. <br><br>
 
 Fig 14. Codul QR final (merge chiar si cu verde)<br>
 <br><br>
-Aici este codul QR initial pentru comparatie. <br>
-<img src="https://github.com/user-attachments/assets/22d8fd3c-d1e6-4da6-9600-1b5931b3629c" width="300"> <br>
-Fig 15. Codul QR initial (si final, pentru ca sunt la fel :) )<br><br>
-Seamana cele doua coduri? <br>
-Raspusul e DA! Pentru ca sunt la fel! <br>
+Dupa cum se poate observa, acest cod este identic cu cel initial din fig 1. <br><br>
 Asadar, acestia sunt pasii pentru a creea un cod QR de la zero. <br>
 Pentru celelalte versiuni de cod QR ideea este aceeasi, doar ca e mai mult de munca. <br><br>
 Concluzie: <br>
@@ -266,7 +262,7 @@ In aceasta sectiune vom aborda in sens invers strategia. <br>
 O sa folosim un cod QR de ordin 2 (25x25) si vom decodifica pas cu pas informatia din acesta. <br><br>
 Dar mai intai, hai sa vedem structura unui astfel de cod QR. <br>
 <img src="https://github.com/user-attachments/assets/00991431-133d-4095-aeb4-82af6a87d100" width="500"><br>
-Fig 16. Structura codului QR de tip 2 <br><br>
+Fig 15. Structura codului QR de tip 2 <br><br>
 Daca il scanam obtinem mesajul "QR Code Model 2", dar hai sa vedem de ce este asa. <br>
 Dupa cum vedem in imaginea de mai sus, avem prezente elementele definitorii clasice prezentate pana acum, doar ca mai avem inca un patrat mic de aliniere si evident ca linile de scincronizare sunt mai lungi. <br>
 Acum hai sa analizam putin spatiul ramas in acest cod. <br>
@@ -298,11 +294,11 @@ Asadar, putem stoca mai multa informatie, dar si spatiul utilizat pentru corecat
 Acum, hai sa incercam sa decodificam un cod QR tip 2. Cunoastem tot ceea ce trebuie. <br>
 Plecam de la acest cod gasit pe internet. <br>
 <img src="https://github.com/user-attachments/assets/2c35eda6-9b95-40e3-b49e-7e308c1b7f86" width="200"><br>
-Fig 17. Codul QR care treduie decodificat <br><br>
+Fig 16. Codul QR care treduie decodificat <br><br>
 Interesant de vazut cum acest cod poate fi citit foarte usor chiar daca nu e clar. Acest lucru se datoreaza acelor biti de corectare a erorilor. <br><br>
 Bun, acum hai sa il facem mai clar ca sa putem lucra usor cu el. In plus o sa delimitam rapid elementele care nu ne intereseaza. <br>
 <img src="https://github.com/user-attachments/assets/f442787c-74ed-4ecf-b17c-b918b67d9518" width="500"><br>
-Fig 18. Descompunerea codului QR <br><br>
+Fig 17. Descompunerea codului QR <br><br>
 Am reusit sa delimitam patratele de aliniere si linile de sincronizare. <br>
 In plus, am scos in evidenta si secventele de mascare. <br><br>
 
@@ -324,7 +320,7 @@ Deci totul e bine pana aici. Nu avem nicio problema de valididate a codului QR. 
 Acum trebuie sa demascam acest cod, adica sa inversam bitii conform mastii respective, in cazul nostru 011). <br>
 Dupa cum obsevam, o sa fie putin mai complicat decat in cazul precedent, intrucat acest tip de mascare e mai complex. <br>
 <img src="https://github.com/user-attachments/assets/145af75e-a9e8-4205-9a33-4185e63e1c12" width="500"><br>
-Fig 19. Procesul de demascare a codului QR <br><br>
+Fig 18. Procesul de demascare a codului QR <br><br>
 Bun, acum hai sa explic mai in detaliu. <br>
 In primul rand, am scos de tot zonele inutile si le-am marcat cu rosu pentru a nu ne mai incurca. <br>
 In al doilea rand, pe spatiul ramas am aplicat pattern-ul pe diagonala specific mastii noastre (a se vedea fig 10). <br>
@@ -333,13 +329,13 @@ Patratele colorate cu albastru sunt in prezent negre si o sa fie transformate in
 Patratele colorate cu galben sunt albe in prezent si o sa fie transformate in negru in urma demascarii. <br>
 Acum, ca am explicat aceste notiuni, hai sa interschimbam bitii in discutie si sa ajungem la forma initiala fara masca. <br>
 <img src="https://github.com/user-attachments/assets/7153cbd8-9e8b-4652-a5c3-3f8efccf83ac" width="500"><br>
-Fig 20. Codul QR fara masca <br><br>
+Fig 19. Codul QR fara masca <br><br>
 Dupa acest pas mai complicat am ajuns la forma initiala. <br>
 Acum trebuie sa il impartim in blocuri si sa extragem mesajul. <br>
 Daca ne uitam la poza de mai sus, primii 4 biti sunt 0100, deci tipul de date este bytes. <br>
 Urmatorii 8 biti sunt byte-ul de nr de caractere (00001111) deci 15 caractere. Aceasta este lungimea mesajului nostru. <br>
 <img src="https://github.com/user-attachments/assets/2297f2aa-41b3-4f63-943c-5bb7a5e0d90e" height="500"><br>
-Fig 21. Impartirea tipica a unui cod QR <br><br>
+Fig 20. Impartirea tipica a unui cod QR <br><br>
 Atentie! Aceasta impartire este la modul general pentru cazul de corectare a erorilor M (cum avem si noi), dar in care secventa de stop nu este indicata fix dupa mesaj, ci dupa toti cei 26 de octeti disponibili pentru mesaj. Mesajul nostru e mai mic, asa ca o sa avem secventa de stop si apoi octetii de padding pe spatiul ramas pana la octetii de corectare a erorilor. <br>
 Totusi, codul nostru QR are o capacitate totala de 44 de bytes. Dintre acestia 2 sunt pentru tipul de date (4 biti la inceput, 1 byte pt nr de caractere si 4 biti la final pentru finalul de sir), deci raman 42. Am selectat eroare medie (M), deci vom avea 16 bytes destinati corectarii erorilor. Astfel ramanem cu 26 de bytes de date. <br>
 Noi avem doar 15, deci codul trebuie sa aiba inca 11 bytes de padding dupa secventa de stop (0000). Vom verifica asta. <br><br>
@@ -357,7 +353,7 @@ Acum, pentru calculul octetilor de eroare trebuie sa concatenam toti bitii de pa
 Astfel avem: <br>
 01000000 11110101 00010101 00100010 00000100 00110110 11110110 01000110 01010010 00000100 11010110 11110110 01000110 01010110 11000010 00000011 00100000 11101100 00010001 11101100 00010001 11101100 00010001 11101100 00010001 11101100 00010001 11101100 <br><br>
 Sau in zecimal: <br>
-64 245 21 34 4 54 246 70 82 4 214 246 70 86 194 3 32 236 17 236 17 236 17 236 17 236 17 236 <br><br
+64 245 21 34 4 54 246 70 82 4 214 246 70 86 194 3 32 236 17 236 17 236 17 236 17 236 17 236 <br><br>
 
 Acum hai sa vedem daca si restul bitilor sunt corecti. <br>
 Daca introducem acesti coeficienti in scriptul Reed-Solomon vom obtine urmatoarele 16 valori: <br>
