@@ -127,11 +127,11 @@ Astfel (aproape) fiecare chenar are 8 biti, adica 8 patratele. <br>
 ### Completarea codului QR
 Completarea codului QR incepe din coltul din dreapta jos (DF_3) pe desen si continua in forma de zig-zag pe tot restul spatiului. <br>
 Ordinea de parcurgere este urmatoarea: <br>
-DF_3 -> DF_2 -> DF_1 -> DF_0 -> NC_7 -> NC_6 -> ... NC_0 -> 1_7 -> 1_6 -> ...10_0 -> 11_7 -> ... -> E7_1 -> E7_0. <br>
+**DF_3 -> DF_2 -> DF_1 -> DF_0 -> NC_7 -> NC_6 -> ... NC_0 -> 1_7 -> 1_6 -> ...10_0 -> 11_7 -> ... -> E7_1 -> E7_0**. <br>
 Bun, poate ca pare putin ambiguu pana acum. <br>
-Ce inseamna, DF, NC, 1, 2, E1 etc? <br><br>
+Ce inseamna totusi DF, NC, 1, 2, E1 etc? <br><br>
 Mai jos urmeaza explicatiile: <br>
-- DF (Data format): acesta este un sir de 4 biti care indica codului QR ce tip de date vrem sa codam. <br>
+- **DF (Data format):** acesta este un sir de 4 biti care indica codului QR ce tip de date vrem sa codam. <br>
 Exista mai multe tipuri: binar, numeric, alfanumeric si kanji. Fiecare tip are o secventa speciala de biti. <br>
 Mai jos putem vedea cei 4 biti in functie de tipul de date: <br>
 &emsp;- Numeric : 0001 <br>
@@ -139,14 +139,14 @@ Mai jos putem vedea cei 4 biti in functie de tipul de date: <br>
 &emsp;- Binar: 0100 <br>
 &emsp;- Kanji: 1000 <br>
 
-&emsp;&emsp;Noi o sa lucram cu date in format binar, asa ca cei 4 biti sunt standardizati: "0100", adica DF_3 = 0, DF_2 = 1, DF_1 = 0, DF_0 = 0. <br>
-- NC (Number of Characters): este o secventa de 8 biti care codifica numarul de caractere pe care urmeaza un mesaj sa il aiba. <br>
-- 1 - 17: Caracterele codate pe 8 biti. <br>
-- E1 - E7: Octetii pentru corectarea erorii. <br><br>
+&emsp;&emsp;Noi o sa lucram cu date in format binar, asa ca cei 4 biti sunt standardizati: "0100", adica **DF_3 = 0, DF_2 = 1, DF_1 = 0, DF_0 = 0**. <br>
+- **NC (Number of Characters):** este o secventa de 8 biti care codifica numarul de caractere pe care urmeaza un mesaj sa il aiba. <br>
+- **1 - 17:** Mesajul nostru, unde fiecare caracter este codat pe 8 biti. <br>
+- **E1 - E7:** Octetii pentru corectarea erorii. <br><br>
 
-Noi o sa vrem sa cream un cod QR pentru mesajul "My QR Code", astfel, daca numaram inclusiv spatiile, ajungem la 10 caractere. <br>
+Noi o sa vrem sa cream un cod QR pentru mesajul "**My QR Code**", astfel, daca numaram inclusiv spatiile, ajungem la **10 caractere**. <br>
 Daca o sa convertim 10 in binar vom obtine 00001010. Adica octetul NC va avea valoarea: 00001010. <br>
-Mai detaliat NC_7 = 0, NC_6 = 0, NC_5 = 0, NC_4 = 0, NC_3 = 1, NC_2 = 0, NC_1 = 1, NC_0 = 0. <br>
+Mai detaliat **NC_7 = 0, NC_6 = 0, NC_5 = 0, NC_4 = 0, NC_3 = 1, NC_2 = 0, NC_1 = 1, NC_0 = 0**. <br>
 Asta inseamana ca pana acum am completat primii 4 + 8 biti in felul urmator: <br>
 ![image](https://github.com/user-attachments/assets/8fc32fe5-0339-41da-b057-7bc1b08ea3cc) <br>
 Fig 5. Completarea DF (Data format) si NC (Number of Characters)<br><br>
@@ -175,10 +175,10 @@ Fig 7. Codul QR completat cu datele noastre<br><br>
 Ok, dar nu avem nici macar jumatate din cod completat. Nicio problema! <br>
 Acum am terminat de codat mesajul nostru. <br>
 Pentru a semnala acest lucru trebuie sa adaugam **secventa de stop**, adica codul **0000**. <br>
-Astfel 11_7, 11_6, 11_5 si 11_4 o sa fie 0. <br>
+Astfel **11_7, 11_6, 11_5 si 11_4 o sa fie 0**. <br>
 Bun, dar in aceasta imagine avem loc destinat datelor pana la 17 octeti si abia apoi observam secventa de stop de 4 biti. <br>
 Da, daca aveam un mesaj de 17 caractere am fi procedat asa, dar noi avem doar 10. Asa ca trebuie sa punem secventa de stop acum. <br>
-Restul spatiului nu va fi lasat gol. Se va completa cu o secventa de 16 biti de padding care pot fi impartiti in 2 octeti. <br>
+Restul spatiului nu va fi lasat gol. Se va completa cu o secventa de **16 biti de padding** care pot fi impartiti in 2 octeti. <br>
 Acestia sunt "11101100 00010001" si vor alterna in aceasta ordine de cate ori este nevoie pentru a completa spatiul necesar. <br>
 Noi am ocupat doar 10 octeti de date, asa ca o sa avem nevoie de 7 octeti de padding. <br>
 Acestia sunt: 11101100 00010001 11101100 00010001 11101100 00010001 11101100 si se vor adauga in continuare. <br><br>
