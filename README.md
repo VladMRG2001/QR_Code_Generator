@@ -242,7 +242,7 @@ Aceasta valoare trebuie sa fie **XOR** cu sirul urmator: **101010000010010**. Ac
 In final sirul care o sa fie trecut in codul QR este: 111110110101010, asa cum se poate vedea si in tabel. <br>
 Aceasta secventa o sa fie trecuta in zona portocalie in ambele locuri in ordinea indicata. <br><br>
 Codul QR arata acum asa: <br>
-<img src="https://github.com/user-attachments/assets/38a7e730-9115-4f2f-8431-226622012153" width="500"> <br>
+<img src="https://github.com/user-attachments/assets/39c18e79-0ffa-4185-9216-17197dd28034" width="500"> <br>
 Fig 13. Codul QR dupa aplicarea tuturor pasilor <br><br>
 Hai! Scaneaza-l! Merge? <br>
 Probabil ca merge daca te chinui putin, deoarece e colorat cu verde si nuante de gri si are si linii peste el. <br>
@@ -332,7 +332,7 @@ Dupa acest pas mai complicat am ajuns la forma initiala. <br>
 Acum trebuie sa il impartim in blocuri si sa extragem mesajul. <br>
 Daca ne uitam la poza de mai sus, primii 4 biti sunt 0100, deci tipul de date este bytes. <br>
 Urmatorii 8 biti sunt byte-ul de nr de caractere (00001111) deci 15 caractere. Aceasta este lungimea mesajului nostru. <br>
-<img src="https://github.com/user-attachments/assets/2297f2aa-41b3-4f63-943c-5bb7a5e0d90e" width="500"> <br>
+<img src="https://github.com/user-attachments/assets/445e1e2d-3c01-456a-b100-2ac168e49b92" width="500"> <br>
 Fig 20. Impartirea tipica a unui cod QR <br><br>
 Atentie! Aceasta impartire este la modul general pentru cazul de corectare a erorilor M (cum avem si noi), dar in care secventa de stop nu este indicata fix dupa mesaj, ci dupa toti cei 26 de octeti disponibili pentru mesaj. <br> 
 Mesajul nostru e mai mic, asa ca o sa avem secventa de stop si apoi octetii de padding pe spatiul ramas pana la octetii de corectare a erorilor. <br>
