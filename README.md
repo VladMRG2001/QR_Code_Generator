@@ -218,7 +218,7 @@ O masca nu este nimic altceva decat o interschimbare a bitilor cu 0 si 1 pe anum
 Exista 8 tipuri de masti. <br>
 Mai jos le putem observa: <br>
 <img src="https://github.com/user-attachments/assets/b7c48adf-8e30-4918-acc1-0f0cd5ed86c7" width="500"> <br>
-<img src="https://github.com/user-attachments/assets/4397e0dd-71a9-41cb-90e3-ff9fd59ec98b" width="500"> <br>
+<img src="https://github.com/user-attachments/assets/a80eb78f-4923-403a-809b-9ec27b84bad3" width="500"> <br>
 Fig 10. Tipurile de mascare pentru un cod QR <br><br>
 Noi o sa alegem masca 3. Aceasta este nr 2 daca numaram de la 0. Astfel, in binar vom avea codul "010". <br>
 Aceasta presupune inversarea bitilor de 1 si 0 din 3 in 3 coloane, adica pe coloanele 1, 4, 7, 10, 13, 16 si 19. <br>
