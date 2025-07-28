@@ -35,13 +35,13 @@ Orice cod QR are anumite componente definitorii: <br>
 &emsp;**- Zona de date:** Informația stocată în codul QR poate include URL-uri, texte, numere de telefon, adrese de e-mail sau alte tipuri de date. <br><br>
 
 ### Elementele definitorii 
-In imaginea de mai jos am separat zonele definitorii ale oricarui cod QR. <br>
-Zonele inconjurate cu linie rosie sunt identice pentru orice QR. <br>
+Mai jos am separat zonele definitorii ale oricarui cod QR. <br>
+Zonele inconjurate cu linie rosie sunt patratele de aliniere si linile de sincronizare. <br>
 <img src="https://github.com/user-attachments/assets/fff4d635-3ca1-4765-a5f5-6a8831d2ebe9" width="300"><br>
 Fig 2. Patratele de aliniere si sinctronizare (rosu)<br><br>
 In imaginea urmatoare putem observa o alta sectiune rezervata. <br>
-Zona delimitata cu albastru contine alte patratele care nu contin datele proriuzise, o sa vorbim despre ele mai tarziu. <br>
-Acel patrat desenat cu verde in interiorul zonei albastre este intotdeauna negru. <br>
+Zona delimitata cu albastru contine alte patratele (secventa de mascare si corectare) care nu contin datele proriuzise. O sa vorbim despre acea portiune mai tarziu. <br>
+In plus, acel patrat desenat cu verde in interiorul zonei albastre este intotdeauna negru. <br>
 <img src="https://github.com/user-attachments/assets/c2db5ee8-798f-48c7-933b-1f25e4a18207" width="300"><br>
 Fig 3. Secventa de mascare si corectare (albastru)<br><br>
 Restul codului QR este destinat datelor efective. <br>
