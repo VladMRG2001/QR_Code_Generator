@@ -276,7 +276,7 @@ Mai jos observam cum se distribuie informatia in acest caz: <br>
 | "01" | L | 10 |  2 | 32 | 44 |
 | "00" | M | 16 |  2 | 26 | 44 |
 | "11" | Q | 22 |  2 | 20 | 44 |
-| "10" | H | 18 |  2 | 14 | 44 |
+| "10" | H | 28 |  2 | 14 | 44 |
 
 <br>
 unde: <br>
@@ -294,7 +294,7 @@ Plecam de la acest cod gasit pe internet. <br>
 <img src="https://github.com/user-attachments/assets/2c35eda6-9b95-40e3-b49e-7e308c1b7f86" width="200"> <br>
 Fig 16. Codul QR care treduie decodificat <br><br>
 Interesant de vazut cum acest cod poate fi citit foarte usor chiar daca nu e clar. Acest lucru se datoreaza acelor biti de corectare a erorilor. <br><br>
-Bun, acum hai sa il facem mai clar ca sa putem lucra usor cu el. In plus o sa delimitam rapid elementele care nu ne intereseaza. <br>
+Bun, acum hai sa il facem mai clar ca sa putem lucra usor cu el. In plus, o sa delimitam rapid elementele care nu ne intereseaza. <br>
 <img src="https://github.com/user-attachments/assets/f442787c-74ed-4ecf-b17c-b918b67d9518" width="500"> <br>
 Fig 17. Descompunerea codului QR <br><br>
 Am reusit sa delimitam patratele de aliniere si linile de sincronizare. <br>
@@ -310,7 +310,7 @@ Asadar, avem: <br>
 101010000010010 Xor <br>
 000111101011001 Sir initial <br><br>
 
-Sirul initial are 3 parti: 2 biti pentru tipul de eroare, 3 biti pentru masca, 10 biti de corectie pentru primii 5. <br>
+Sirul initial are 3 parti: 2 biti pentru tipul de eroare, 3 biti pentru masca, 10 biti de corectie. <br>
 Eroare: 00 (M), deci nivelul de corectare a erorilor este mediu. <br>
 Masca: 011 (3) deci a 4-a, pentru ca incepe de la 0 (acest tip de masca il avem in fig 10) <br>
 Biti de corectie: 1101011001. Daca verificam si cu tabelul de generare a secventei de mascare din fig 12 o sa observam ca fix acesta este sirul corect pentru 00011. <br>
