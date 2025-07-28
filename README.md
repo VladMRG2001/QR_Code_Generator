@@ -322,6 +322,9 @@ Biti de corectie: 1101011001. Daca verificam si cu tabelul de generare a secvent
 Deci totul e bine pana aici. Nu avem nicio problema de valididate a codului QR. <br><br>
 Acum trebuie sa demascam acest cod, adica sa inversam bitii conform mastii respective, in cazul nostru 011). <br>
 Dupa cum obsevam, o sa fie putin mai complicat decat in cazul precedent, intrucat acest tip de mascare e mai complex. <br>
+<img src="https://github.com/user-attachments/assets/130482b2-b0ae-4c2a-a8eb-be88c5d4461c" width="500"><br>
+Fig 19. Procesul de demascare a codului QR <br><br>
+
 
 ### Bibliografie si referinte: <br>
 [1] https://www.youtube.com/watch?v=w5ebcowAJD8 (Video explicativ despre QR - de aici a pornit acest proiect)<br>
