@@ -63,7 +63,7 @@ Asadar, pentru orice tip de cod exista 4 niveluri de corectare de eroare in func
 - H (High) - 30%. <br>
 
 Cu cat nivelul e mai mare, cu atat e nevoie de alocarea mai multor biti pentru corectare. <br><br>
-Mai jos avem schema de alocare a octetilor pentru codul QR din cazul nostru. <br><br>
+Mai jos avem schema de alocare a octetilor pentru codul QR din cazul nostru. <br>
 
 |  CE  | C | OC | OI | OD | T  |
 |------|---|----|----|----|----|
