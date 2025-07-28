@@ -301,7 +301,7 @@ Plecam de la acest cod gasit pe internet. <br>
 Fig 17. Codul QR care treduie decodificat <br><br>
 Interesant de vazut cum acest cod poate fi citit foarte usor chiar daca nu e clar. Acest lucru se datoreaza acelor biti de corectare a erorilor. <br><br>
 Bun, acum hai sa il facem mai clar ca sa putem lucra usor cu el. In plus o sa delimitam rapid elementele care nu ne intereseaza. <br>
-<img src="https://github.com/user-attachments/assets/f442787c-74ed-4ecf-b17c-b918b67d9518" width="500">
+<img src="https://github.com/user-attachments/assets/f442787c-74ed-4ecf-b17c-b918b67d9518" width="500"><br>
 Fig 18. Descompunerea codului QR <br><br>
 Am reusit sa delimitam patratele de aliniere si linile de sincronizare. <br>
 In plus, am scos in evidenta si secventele de mascare. <br><br>
@@ -338,7 +338,7 @@ Dupa acest pas mai complicat am ajuns la forma initiala. <br>
 Acum trebuie sa il impartim in blocuri si sa extragem mesajul. <br>
 Daca ne uitam la poza de mai sus, primii 4 biti sunt 0100, deci tipul de date este bytes. <br>
 Urmatorii 8 biti sunt byte-ul de nr de caractere (00001111) deci 15 caractere. Aceasta este lungimea mesajului nostru. <br>
-<img src="https://github.com/user-attachments/assets/2297f2aa-41b3-4f63-943c-5bb7a5e0d90e" height="500">
+<img src="https://github.com/user-attachments/assets/2297f2aa-41b3-4f63-943c-5bb7a5e0d90e" height="500"><br>
 Fig 21. Impartirea tipica a unui cod QR <br><br>
 Atentie! Aceasta impartire este la modul general pentru cazul de corectare a erorilor M (cum avem si noi), dar in care secventa de stop nu este indicata fix dupa mesaj, ci dupa toti cei 26 de octeti disponibili pentru mesaj. Mesajul nostru e mai mic, asa ca o sa avem secventa de stop si apoi octetii de padding pe spatiul ramas pana la octetii de corectare a erorilor. <br>
 Totusi, codul nostru QR are o capacitate totala de 44 de bytes. Dintre acestia 2 sunt pentru tipul de date (4 biti la inceput, 1 byte pt nr de caractere si 4 biti la final pentru finalul de sir), deci raman 42. Am selectat eroare medie (M), deci vom avea 16 bytes destinati corectarii erorilor. Astfel ramanem cu 26 de bytes de date. <br>
