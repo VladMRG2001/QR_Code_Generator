@@ -264,6 +264,10 @@ Destul de complicat, dar ideea e foarte interesanta! <br><br>
 ## Exemplu pentru decodificarea unui cod QR (pas cu pas)
 In aceasta sectiune vom aborda in sens invers strategia. <br>
 O sa folosim un cod QR de ordin 2 (25x25) si vom decodifica pas cu pas informatia din acesta. <br><br>
+Dar mai intai, hai sa vedem structura unui astfel de cod QR. <br>
+<img src="https://github.com/user-attachments/assets/00991431-133d-4095-aeb4-82af6a87d100" width="500"><br>
+Fig 16. Structura codului QR de tip 2 <br><br>
+Dupa cum vedem in imaginea de mai sus, avem prezente elementele definitorii clasice prezentate pana acum, doar ca mai avem inca un patrat mic de aliniere si evident ca linile de scincronizare sunt mai lungi.
 
 ### Bibliografie si referinte: <br>
 [1] https://www.youtube.com/watch?v=w5ebcowAJD8 (Video explicativ despre QR - de aici a pornit acest proiect)<br>
