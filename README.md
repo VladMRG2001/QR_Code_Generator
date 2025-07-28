@@ -303,7 +303,18 @@ Bun, acum hai sa il facem mai clar ca sa putem lucra usor cu el. In plus o sa de
 <img src="https://github.com/user-attachments/assets/f442787c-74ed-4ecf-b17c-b918b67d9518" width="500">
 Fig 18. Descompunerea codului QR <br><br>
 Am reusit sa delimitam patratele de aliniere si linile de sincronizare. <br>
-In plus, am scos in evidenta si secventa de mascare notata de la 0 la 14. <br>
+In plus, am scos in evidenta si secventele de mascare. <br><br>
+
+Dupa cum vedem, avem sirul (14->0) in jurul celor 3 patrate mari tipice QR. <br>
+Secventa este **101101101001011** in ambele locuri, deci e valid. Era o problema daca cele 2 secvente erau diferite. <br>
+Dupa cum stim, pentru a obtine acest sir s-a aplicat XOR cu sirul de biti: 101010000010010. <br>
+Hai sa aplicam din nou Xor pentru a ajunge la sirul initial. <br>
+O caracteristica a portii logice Xor este ca se poate folosi si pentru criptare si pentru decodificare, intrucat este simetrica. <br>
+Asadar, avem: <br>
+101101101001011 Sir final <br>
+101010000010010 Xor <br>
+000111101011001 Sir initial <br><br>
+
 
 
 ### Bibliografie si referinte: <br>
