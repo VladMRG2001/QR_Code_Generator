@@ -247,7 +247,8 @@ Fig 13. Codul QR dupa aplicarea tuturor pasilor<br><br>
 Hai! Scaneaza-l! Merge? <br>
 Probabil ca merge daca te chinui putin, deoarece e colorat cu verde si nuante de gri si are si linii peste el. <br>
 Hai sa ii scoatem aceste detalii si sa il lasam doar alb si verde. <br><br>
-<img src="https://github.com/user-attachments/assets/73ab51f6-9681-4177-ae10-c33efbb78a26" width="300"><br>
+<img src="https://github.com/user-attachments/assets/b500109b-ce91-4d41-ae6e-ab880249e9bb" width="300"><br>
+
 Fig 14. Codul QR final (merge chiar si cu verde)<br>
 <br><br>
 Aici este codul QR initial pentru comparatie. <br>
