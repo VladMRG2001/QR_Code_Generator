@@ -322,10 +322,19 @@ Biti de corectie: 1101011001. Daca verificam si cu tabelul de generare a secvent
 Deci totul e bine pana aici. Nu avem nicio problema de valididate a codului QR. <br><br>
 Acum trebuie sa demascam acest cod, adica sa inversam bitii conform mastii respective, in cazul nostru 011). <br>
 Dupa cum obsevam, o sa fie putin mai complicat decat in cazul precedent, intrucat acest tip de mascare e mai complex. <br>
-<img src="https://github.com/user-attachments/assets/130482b2-b0ae-4c2a-a8eb-be88c5d4461c" width="500"><br>
+<img src="https://github.com/user-attachments/assets/145af75e-a9e8-4205-9a33-4185e63e1c12" width="500"><br>
 Fig 19. Procesul de demascare a codului QR <br><br>
-
-
+Bun, acum hai sa explic mai in detaliu. <br>
+In primul rand, am scos de tot zonele inutile si le-am marcat cu rosu pentru a nu ne mai incurca. <br>
+In al doilea rand, pe spatiul ramas am aplicat pattern-ul pe diagonala specific mastii noastre (a se vedea fig 10). <br>
+Patratele ramase cu alb si negru nu sunt afectate de acest pattern si vor ramane asa. <br>
+Patratele colorate cu albastru sunt in prezent negre si o sa fie transformate in alb in urma demascarii. <br>
+Patratele colorate cu galben sunt albe in prezent si o sa fie transformate in negru in urma demascarii. <br>
+Acum, ca am explicat aceste notiuni, hai sa interschimbam bitii in discutie si sa ajungem la forma initiala fara masca. <br>
+<img src="https://github.com/user-attachments/assets/7153cbd8-9e8b-4652-a5c3-3f8efccf83ac" width="500"><br>
+Fig 20. Codul QR fara masca <br><br>
+Dupa acest pas mai complicat am ajuns la forma initiala. <br>
+Acum trebuie sa il impartim in blocuri si sa extragem mesajul. <br>
 ### Bibliografie si referinte: <br>
 [1] https://www.youtube.com/watch?v=w5ebcowAJD8 (Video explicativ despre QR - de aici a pornit acest proiect)<br>
 [2] https://www.pclviewer.com/rs2/qrtopology.htm (Sumar despre structura unui cod QR) <br>
