@@ -267,6 +267,7 @@ O sa folosim un cod QR de ordin 2 (25x25) si vom decodifica pas cu pas informati
 Dar mai intai, hai sa vedem structura unui astfel de cod QR. <br>
 <img src="https://github.com/user-attachments/assets/00991431-133d-4095-aeb4-82af6a87d100" width="500"><br>
 Fig 16. Structura codului QR de tip 2 <br><br>
+Daca il scanam obtinem mesajul "QR Code Model 2", dar hai sa vedem de ce este asa. <br>
 Dupa cum vedem in imaginea de mai sus, avem prezente elementele definitorii clasice prezentate pana acum, doar ca mai avem inca un patrat mic de aliniere si evident ca linile de scincronizare sunt mai lungi. <br>
 Acum hai sa analizam putin spatiul ramas in acest cod. <br>
 Daca numaram toate patratelele libere ramase o sa ajungem la un total de 359. <br>
@@ -335,6 +336,40 @@ Acum, ca am explicat aceste notiuni, hai sa interschimbam bitii in discutie si s
 Fig 20. Codul QR fara masca <br><br>
 Dupa acest pas mai complicat am ajuns la forma initiala. <br>
 Acum trebuie sa il impartim in blocuri si sa extragem mesajul. <br>
+Daca ne uitam la poza de mai sus, primii 4 biti sunt 0100, deci tipul de date este bytes. <br>
+Urmatorii 8 biti sunt byte-ul de nr de caractere (00001111) deci 15 caractere. Aceasta este lungimea mesajului nostru. <br>
+<img src="https://github.com/user-attachments/assets/2297f2aa-41b3-4f63-943c-5bb7a5e0d90e" height="500">
+Fig 21. Impartirea tipica a unui cod QR <br><br>
+Atentie! Aceasta impartire este la modul general pentru cazul de corectare a erorilor M (cum avem si noi), dar in care secventa de stop nu este indicata fix dupa mesaj, ci dupa toti cei 26 de octeti disponibili pentru mesaj. Mesajul nostru e mai mic, asa ca o sa avem secventa de stop si apoi octetii de padding pe spatiul ramas pana la octetii de corectare a erorilor. <br>
+Totusi, codul nostru QR are o capacitate totala de 44 de bytes. Dintre acestia 2 sunt pentru tipul de date (4 biti la inceput, 1 byte pt nr de caractere si 4 biti la final pentru finalul de sir), deci raman 42. Am selectat eroare medie (M), deci vom avea 16 bytes destinati corectarii erorilor. Astfel ramanem cu 26 de bytes de date. <br>
+Noi avem doar 15, deci codul trebuie sa aiba inca 11 bytes de padding dupa secventa de stop (0000). Vom verifica asta. <br><br>
+
+Daca luam toti bitii in ordine obtinem: <br>
+0100 00001111 01010001 01010010 00100000 01000011 01101111 01100100 01100101 00100000 01001101 01101111 01100100 01100101 01101100 00100000 00110010 0000 <br><br>
+
+Adica avem caracterele in zecimal: 81 82 32 67 111 100 101 32 77 111 100 101 108 32 50 <br>
+Adica avem caracterele: "QR Code Model 2". <br>
+Ceea ce este perfect. Pana acum am parcurs totul corect. <br><br>
+In continuare ar trebui sa observam cei 11 bytes de padding care alterneaza intre 11101100 si 00010001. <br>
+In realitate avem: 11101100 00010001 11101100 00010001 11101100 00010001 11101100 00010001 11101100 00010001 11101100. <br>
+Deci e perfect pana aici. <br><br>
+Acum, pentru calculul octetilor de eroare trebuie sa concatenam toti bitii de pana acum (224 in total) si sa ii impartim in 28 de bytes. Fiecare octet va fi un coeficient din polinomul pe care il vom introduce in calculatorul reed solomon si pentru care vom seta un polinom generator de ordin 16 pentru a gasi cei 16 octeti de eroare necesari. <br><br>
+Astfel avem: <br>
+01000000 11110101 00010101 00100010 00000100 00110110 11110110 01000110 01010010 00000100 11010110 11110110 01000110 01010110 11000010 00000011 00100000 11101100 00010001 11101100 00010001 11101100 00010001 11101100 00010001 11101100 00010001 11101100 <br><br>
+Sau in zecimal: <br>
+64 245 21 34 4 54 246 70 82 4 214 246 70 86 194 3 32 236 17 236 17 236 17 236 17 236 17 236 <br><br
+
+Acum hai sa vedem daca si restul bitilor sunt corecti. <br>
+Daca introducem acesti coeficienti in scriptul Reed-Solomon vom obtine urmatoarele 16 valori: <br>
+[126, 87, 175, 63, 59, 224, 140, 188, 103, 165, 37, 115, 191, 207, 239, 207]. <br><br>
+Acum hai sa verificam daca acest lucru chiar se intampla in codul nostru. <br>
+In realitate avem: 01111110 01010111 10101111 00111111 00111011 11100000 10001100 10111100 01100111 10100101 00100101 01110011 10111111 11001111 11101111 11001111 <br>
+In zecimal obtinem: 126 87 175 63 59 224 140 188 103 165 37 115 191 207 239 207 <br>
+Este perfect, deoarece in realitate avem fix ceea ce am calculat pe baza scriptului, deci acest cod QR este valid din toate punctele de vedere. <br>
+De asemenea, se observa cum ultimii 7 biti din cod sunt 0, o caracteristica tipica pentru QR V2. <br>
+Astfel, decodarea este completa si detaliata pas cu pas. <br><br>
+Concluzie: <br>
+Acest exemplu a durat mai mult, dar aici avem demonstratia! <br><br>
 ### Bibliografie si referinte: <br>
 [1] https://www.youtube.com/watch?v=w5ebcowAJD8 (Video explicativ despre QR - de aici a pornit acest proiect)<br>
 [2] https://www.pclviewer.com/rs2/qrtopology.htm (Sumar despre structura unui cod QR) <br>
