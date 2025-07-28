@@ -315,7 +315,13 @@ Asadar, avem: <br>
 101010000010010 Xor <br>
 000111101011001 Sir initial <br><br>
 
-
+Sirul initial are 3 parti: 2 biti pentru tipul de eroare, 3 biti pentru masca, 10 biti de corectie pentru primii 5.
+Eroare: 00 (M), deci nivelul de corectare a erorilor este mediu.
+Masca: 011 (3) deci a 4-a, pentru ca incepe de la 0 (acest tip de masca il avem in fig 10)
+Biti de corectie: 1101011001. Daca verificam si cu tabelul de generare a secventei de mascare din fig 12 o sa observam ca fix acesta este sirul corect pentru 00011. <br>
+Deci totul e bine pana aici. Nu avem nicio problema de valididate a codului QR. <br><br>
+Acum trebuie sa demascam acest cod, adica sa inversam bitii conform mastii respective, in cazul nostru 011). <br>
+Dupa cum obsevam, o sa fie putin mai complicat decat in cazul precedent, intrucat acest tip de mascare e mai complex. <br>
 
 ### Bibliografie si referinte: <br>
 [1] https://www.youtube.com/watch?v=w5ebcowAJD8 (Video explicativ despre QR - de aici a pornit acest proiect)<br>
