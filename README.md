@@ -267,8 +267,33 @@ O sa folosim un cod QR de ordin 2 (25x25) si vom decodifica pas cu pas informati
 Dar mai intai, hai sa vedem structura unui astfel de cod QR. <br>
 <img src="https://github.com/user-attachments/assets/00991431-133d-4095-aeb4-82af6a87d100" width="500"><br>
 Fig 16. Structura codului QR de tip 2 <br><br>
-Dupa cum vedem in imaginea de mai sus, avem prezente elementele definitorii clasice prezentate pana acum, doar ca mai avem inca un patrat mic de aliniere si evident ca linile de scincronizare sunt mai lungi.
+Dupa cum vedem in imaginea de mai sus, avem prezente elementele definitorii clasice prezentate pana acum, doar ca mai avem inca un patrat mic de aliniere si evident ca linile de scincronizare sunt mai lungi. <br>
+Acum hai sa analizam putin spatiul ramas in acest cod. <br>
+Daca numaram toate patratelele libere ramase o sa ajungem la un total de 359. <br>
+O proprietate interesanta a tipului 2 este ca 359 nu e divizbil cu 8, astfel nu putem folosi tot spatiul ca in cazul precedent. <br>
+Asadar, ultimii 7 biti sunt implicit 0 pentru acest tip de cod QR (sunt notati cu nul pe desen). <br>
+Acum ramanem cu 352 biti, care daca ii impartim la 8 ajungem la 352/8 = 44 octeti. <br>
+Si in acest caz avem aceleasi 4 niveluri de corectare a erorilor, doar ca numarul de octeti ocupati este diferit. <br>
+Mai jos observam cum se distribuie informatia in acest caz: <br>
 
+|  CE  | C | OC | OI | OD | T  |
+|------|---|----|----|----|----|
+| "01" | L | 10 |  2 | 32 | 44 |
+| "00" | M | 16 |  2 | 26 | 44 |
+| "11" | Q | 22 |  2 | 20 | 44 |
+| "10" | H | 18 |  2 | 14 | 44 |
+
+<br>
+unde: <br>
+CE = codul tipului de corectare in format binar <br>
+C = tipul de corectare a erorilor ales <br>
+OC = numarul de octeti rezervati pentru corectarea erorilor <br>
+OI = numarul de octeti rezervati pentru identificarea datelor (mereu 2) <br>
+OD = numarul total de octeti alocati pentru datele propriuzise stocate in codul QR <br>
+T = numarul total de octeti disponibili (44 in acest caz) <br>
+<br><br>
+
+Asadar, putem stoca mai multa informatie, dar si spatiul utilizat pentru corecatarea erorilor este mai mare. <br>
 ### Bibliografie si referinte: <br>
 [1] https://www.youtube.com/watch?v=w5ebcowAJD8 (Video explicativ despre QR - de aici a pornit acest proiect)<br>
 [2] https://www.pclviewer.com/rs2/qrtopology.htm (Sumar despre structura unui cod QR) <br>
