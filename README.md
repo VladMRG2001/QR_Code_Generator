@@ -290,10 +290,22 @@ C = tipul de corectare a erorilor ales <br>
 OC = numarul de octeti rezervati pentru corectarea erorilor <br>
 OI = numarul de octeti rezervati pentru identificarea datelor (mereu 2) <br>
 OD = numarul total de octeti alocati pentru datele propriuzise stocate in codul QR <br>
-T = numarul total de octeti disponibili (44 in acest caz) <br>
-<br><br>
+T = numarul total de octeti disponibili (44 in acest caz) <br><br>
 
-Asadar, putem stoca mai multa informatie, dar si spatiul utilizat pentru corecatarea erorilor este mai mare. <br>
+Asadar, putem stoca mai multa informatie, dar si spatiul utilizat pentru corecatarea erorilor este mai mare. <br><br>
+
+Acum, hai sa incercam sa decodificam un cod QR tip 2. Cunoastem tot ceea ce trebuie. <br>
+Plecam de la acest cod gasit pe internet. <br>
+<img src="https://github.com/user-attachments/assets/2c35eda6-9b95-40e3-b49e-7e308c1b7f86" width="200"><br>
+Fig 17. Codul QR care treduie decodificat <br><br>
+Interesant de vazut cum acest cod poate fi citit foarte usor chiar daca nu e clar. Acest lucru se datoreaza acelor biti de corectare a erorilor. <br><br>
+Bun, acum hai sa il facem mai clar ca sa putem lucra usor cu el. In plus o sa delimitam rapid elementele care nu ne intereseaza. <br>
+<img src="https://github.com/user-attachments/assets/f442787c-74ed-4ecf-b17c-b918b67d9518" width="500">
+Fig 18. Descompunerea codului QR <br><br>
+Am reusit sa delimitam patratele de aliniere si linile de sincronizare. <br>
+In plus, am scos in evidenta si secventa de mascare notata de la 0 la 14. <br>
+
+
 ### Bibliografie si referinte: <br>
 [1] https://www.youtube.com/watch?v=w5ebcowAJD8 (Video explicativ despre QR - de aici a pornit acest proiect)<br>
 [2] https://www.pclviewer.com/rs2/qrtopology.htm (Sumar despre structura unui cod QR) <br>
