@@ -231,14 +231,14 @@ Galben reprezinta bitii care erau negrii si acum sunt albi. <br>
 Albastru inchis reprezinta bitii care erau albi si acum sunt negrii. <br>
 Acum putem sa completam si zona portocalie. <br>
 Aceasta e formata din 2 siruri identice de cate 15 biti. <br>
-Primii 5 biti sunt "01010", adica cei 2 de eroare + cei 3 de masca. <br>
+Primii 5 biti sunt "01010", adica cei 2 de eroare  (01) + cei 3 de masca (010). <br>
 Ceilalti 10 biti sunt generati in functie de acesti 5 astfel: <br>
 <img src="https://github.com/user-attachments/assets/4002b5ab-f31b-45f4-98b3-0cad1a66e8ac" width="500"> <br>
 Fig 12. Tabelul de generare a secventei de mascare si corectare<br><br>
 
 Astfel, in cazul nostru, cei 10 biti sunt: 0110111000. <br>
 Deci, sirul complet este: 010100110111000. <br> 
-Aceasta valoare trebuie sa fie XOR cu sirul urmator: 101010000010010. <br>
+Aceasta valoare trebuie sa fie **XOR** cu sirul urmator: **101010000010010**. Acest sir este mereu acelasi si este valabil pentru orice cod.<br>
 In final sirul care o sa fie trecut in codul QR este: 111110110101010, asa cum se poate vedea si in tabel. <br>
 Aceasta secventa o sa fie trecuta in zona portocalie in ambele locuri in ordinea indicata. <br><br>
 Codul QR arata acum asa: <br>
